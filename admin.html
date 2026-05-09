@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admin — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root {
+  --orange: #FF6B00;
+  --orange2: #FF8C00;
+  --bg: #f7f7fb;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6b6b8a;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --border: rgba(26,26,46,0.12);
+  --shadow: 0 4px 24px rgba(26,26,46,0.08);
+  --font-head: 'Orbitron', sans-serif;
+  --font-body: 'Exo 2', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); min-height: 100vh; }
+
+/* ── LOGIN SCREEN ── */
+#loginScreen {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #fff 0%, #fff5ee 100%);
+}
+.login-card {
+  background: var(--card); border-radius: 20px; padding: 2.5rem 2rem;
+  box-shadow: 0 20px 60px rgba(255,107,0,0.12);
+  width: 100%; max-width: 380px; text-align: center;
+  border: 1px solid rgba(255,107,0,0.15);
+}
+.login-logo { font-family: var(--font-head); font-size: 1.2rem; color: var(--text); margin-bottom: .3rem; }
+.login-logo span { color: var(--orange); }
+.login-sub { color: var(--muted); font-size: .82rem; margin-bottom: 2rem; }
+.login-card input {
+  width: 100%; padding: .8rem 1rem; border: 1.5px solid var(--border);
+  border-radius: 10px; font-family: var(--font-body); font-size: .9rem;
+  outline: none; transition: border-color .3s, box-shadow .3s;
+  margin-bottom: 1rem; color: var(--text);
+}
+.login-card input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,107,0,0.09); }
+.btn-login {
+  width: 100%; padding: .85rem; background: var(--orange); color: #fff;
+  border: none; border-radius: 10px; font-family: var(--font-body);
+  font-size: .88rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  cursor: pointer; transition: background .3s, transform .2s, box-shadow .3s;
+}
+.btn-login:hover { background: #e55d00; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,0.3); }
+.login-error { color: var(--danger); font-size: .8rem; margin-top: .5rem; display: none; }
+.login-hint { color: var(--muted); font-size: .75rem; margin-top: 1rem; }
+
+/* ── ADMIN PANEL ── */
+#adminPanel { display: none; }
+
+header {
+  background: #fff; border-bottom: 1px solid rgba(255,107,0,0.12);
+  padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 20px rgba(26,26,46,0.06);
+}
+.header-logo { font-family: var(--font-head); font-size: 1rem; font-weight: 700; }
+.header-logo span { color: var(--orange); }
+.header-right { display: flex; align-items: center; gap: 1rem; }
+.btn-save {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .6rem 1.4rem; background: var(--orange); color: #fff;
+  border: none; border-radius: 8px; font-family: var(--font-body);
+  font-size: .8rem; font-weight: 700; cursor: pointer; letter-spacing: 1px;
+  transition: background .3s, transform .2s, box-shadow .3s;
+}
+.btn-save:hover { background: #e55d00; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,0,0.28); }
+.btn-logout {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .6rem 1rem; background: transparent; color: var(--muted);
+  border: 1.5px solid var(--border); border-radius: 8px;
+  font-family: var(--font-body); font-size: .78rem; cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+.btn-logout:hover { color: var(--danger); border-color: var(--danger); }
+.btn-preview {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .6rem 1rem; background: transparent; color: var(--orange);
+  border: 1.5px solid var(--orange); border-radius: 8px;
+  font-family: var(--font-body); font-size: .78rem; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-preview:hover { background: var(--orange); color: #fff; }
+
+/* layout */
+.admin-layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 64px); }
+
+/* sidebar */
+.sidebar {
+  background: #fff; border-right: 1px solid rgba(255,107,0,0.10);
+  padding: 1.5rem 1rem;
+}
+.sidebar-section { font-size: .62rem; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; font-family: var(--font-head); padding: .5rem .75rem .3rem; margin-top: 1rem; }
+.sidebar-item {
+  display: flex; align-items: center; gap: .6rem;
+  padding: .65rem .85rem; border-radius: 9px; cursor: pointer;
+  color: var(--muted); font-size: .82rem; font-weight: 500;
+  transition: background .2s, color .2s; margin-bottom: .2rem;
+}
+.sidebar-item i { width: 16px; text-align: center; font-size: .9rem; }
+.sidebar-item:hover { background: var(--bg); color: var(--text); }
+.sidebar-item.active { background: rgba(255,107,0,0.09); color: var(--orange); font-weight: 600; }
+
+/* main content */
+.admin-main { padding: 2rem; overflow-y: auto; }
+
+/* tabs */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.panel-title {
+  font-family: var(--font-head); font-size: 1.1rem; font-weight: 700;
+  margin-bottom: .3rem; color: var(--text);
+}
+.panel-sub { color: var(--muted); font-size: .84rem; margin-bottom: 2rem; }
+
+/* form elements */
+.field-group {
+  background: var(--card); border: 1px solid rgba(255,107,0,0.12);
+  border-radius: 14px; padding: 1.5rem; margin-bottom: 1.2rem;
+  box-shadow: var(--shadow);
+}
+.field-group-title {
+  font-size: .72rem; color: var(--orange); letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 700; margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.field-row.single { grid-template-columns: 1fr; }
+.field {
+  display: flex; flex-direction: column; gap: .35rem;
+}
+.field label { font-size: .72rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+.field input, .field textarea, .field select {
+  padding: .7rem .9rem; border: 1.5px solid var(--border); border-radius: 9px;
+  font-family: var(--font-body); font-size: .86rem; color: var(--text);
+  outline: none; transition: border-color .25s, box-shadow .25s;
+  background: var(--bg); resize: none;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,107,0,0.09);
+  background: #fff;
+}
+.field textarea { min-height: 90px; }
+
+/* skill rows */
+.skill-row {
+  display: grid; grid-template-columns: 1fr 120px 36px; gap: .6rem;
+  align-items: center; margin-bottom: .6rem;
+}
+.skill-row input[type="range"] { width: 100%; accent-color: var(--orange); }
+.skill-pct { font-size: .82rem; font-weight: 700; color: var(--orange); text-align: center; min-width: 38px; }
+.btn-remove {
+  width: 32px; height: 32px; border-radius: 8px; border: none;
+  background: rgba(239,68,68,0.10); color: var(--danger);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.btn-remove:hover { background: rgba(239,68,68,0.20); }
+.btn-add {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .5rem 1rem; background: rgba(255,107,0,0.09);
+  color: var(--orange); border: 1.5px dashed rgba(255,107,0,0.35);
+  border-radius: 8px; font-size: .78rem; font-weight: 600;
+  cursor: pointer; transition: background .2s; margin-top: .4rem;
+}
+.btn-add:hover { background: rgba(255,107,0,0.15); }
+
+/* project cards in admin */
+.project-admin-card {
+  background: var(--bg); border: 1px solid rgba(255,107,0,0.12);
+  border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+}
+.project-admin-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: .8rem;
+}
+.project-admin-num { font-family: var(--font-head); font-size: .65rem; color: var(--orange); letter-spacing: 2px; }
+
+/* toast */
+#toast {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+  background: var(--success); color: #fff;
+  padding: .85rem 1.5rem; border-radius: 10px;
+  font-size: .85rem; font-weight: 600;
+  box-shadow: 0 8px 30px rgba(34,197,94,0.35);
+  display: flex; align-items: center; gap: .5rem;
+  transform: translateY(80px); opacity: 0;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), opacity .35s;
+}
+#toast.show { transform: translateY(0); opacity: 1; }
+
+/* change pwd */
+.pwd-section { margin-top: 1.5rem; }
+
+/* responsive */
+@media (max-width: 768px) {
+  .admin-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .field-row { grid-template-columns: 1fr; }
+  header { padding: 1rem; }
+  .admin-main { padding: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ LOGIN ══ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">Dev<span>.</span>Admin</div>
+    <p class="login-sub">Panneau d'administration du portfolio</p>
+    <input type="password" id="pwdInput" placeholder="Mot de passe admin" onkeydown="if(event.key==='Enter')tryLogin()"/>
+    <button class="btn-login" onclick="tryLogin()"><i class="fa-solid fa-lock-open"></i>&nbsp; Accéder au panneau</button>
+    <p class="login-error" id="loginError"><i class="fa-solid fa-triangle-exclamation"></i> Mot de passe incorrect</p>
+    <p class="login-hint">💡 Mot de passe par défaut : <strong>admin123</strong></p>
+  </div>
+</div>
+
+<!-- ══ ADMIN PANEL ══ -->
+<div id="adminPanel">
+
+  <header>
+    <div class="header-logo">Dev<span>.</span>Admin</div>
+    <div class="header-right">
+      <button class="btn-preview" onclick="window.open('portfolio.html','_blank')"><i class="fa-solid fa-eye"></i> Voir le portfolio</button>
+      <button class="btn-save" onclick="saveAll()"><i class="fa-solid fa-floppy-disk"></i> Sauvegarder</button>
+      <button class="btn-logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</button>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">Navigation</div>
+      <div class="sidebar-item active" onclick="showTab('hero',this)"><i class="fa-solid fa-house"></i> Hero / Accueil</div>
+      <div class="sidebar-item" onclick="showTab('about',this)"><i class="fa-solid fa-user"></i> À Propos</div>
+      <div class="sidebar-item" onclick="showTab('skills',this)"><i class="fa-solid fa-code"></i> Compétences</div>
+      <div class="sidebar-item" onclick="showTab('projects',this)"><i class="fa-solid fa-folder"></i> Projets</div>
+      <div class="sidebar-item" onclick="showTab('certifications',this)"><i class="fa-solid fa-certificate"></i> Certifications</div>
+      <div class="sidebar-item" onclick="showTab('contact',this)"><i class="fa-solid fa-envelope"></i> Contact</div>
+      <div class="sidebar-section">Paramètres</div>
+      <div class="sidebar-item" onclick="showTab('settings',this)"><i class="fa-solid fa-gear"></i> Paramètres</div>
+      <div class="sidebar-item" onclick="showTab('export',this)"><i class="fa-solid fa-download"></i> Exporter</div>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+
+      <!-- ── HERO ── -->
+      <div class="tab-panel active" id="tab-hero">
+        <div class="panel-title">Hero / Accueil</div>
+        <p class="panel-sub">Modifiez le titre, le sous-titre et les statistiques de la page d'accueil.</p>
+
+        <div class="field-group">
+          <div class="field-group-title"><i class="fa-solid fa-heading"></i> Texte principal</div>
+          <div class="field-row single">
+            <div class="field"><label>Ligne 1 du titre</label><input type="text" id="hero_title1" placeholder="Je transforme les idées"/></div>
+          </div>
+          <div class="field-row single">
+            <div class="field"><label>Nom / texte en orange</label><input type="text" id="hero_name" placeholder="solutions numériques"/></div>
+          </div>
+          <div class="field-row single">
+            <div class="field"><label>Ligne 3 du titre</label><input type="text" id="hero_title3" placeholder="intelligentes."/></div>
+          </div>
+          <div class="field-row single">
+            <div class="field"><label>Sous-titre</label><textarea id="hero_subtitle"></textarea></div>
+          </div>
+          <div class="field-row single">
+            <div class="field"><label>Texte badge (ex: Disponible pour un stage)</label><input type="text" id="hero_badge"/></div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title"><i class="fa-solid fa-chart-simple"></i> Statistiques</div>
+          <div class="field-row">
+            <div class="field"><label>Stat 1 — Nombre</label><input type="text" id="stat1_num" placeholder="5+"/></div>
+            <div class="field"><label>Stat 1 — Label</label><input type="text" id="stat1_label" placeholder="Projets"/></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Stat 2 — Nombre</label><input type="text" id="stat2_num" placeholder="10+"/></div>
+            <div class="field"><label>Stat 2 — Label</label><input type="text" id="stat2_label" placeholder="Technologies"/></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Stat 3 — Nombre</label><input type="text" id="stat3_num" placeholder="0+"/></div>
+            <div class="field"><label>Stat 3 — Label</label><input type="text" id="stat3_label" placeholder="Certifications"/></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Stat 4 — Nombre</label><input type="text" id="stat4_num" placeholder="L2"/></div>
+            <div class="field"><label>Stat 4 — Label</label><input type="text" id="stat4_label" placeholder="Licence en cours"/></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ABOUT ── -->
+      <div class="tab-panel" id="tab-about">
+        <div class="panel-title">À Propos</div>
+        <p class="panel-sub">Modifiez vos informations personnelles, la biographie et les mots-clés de compétences.</p>
+
+        <div class="field-group">
+          <div class="field-group-title"><i class="fa-solid fa-id-card"></i> Identité</div>
+          <div class="field-row">
+            <div class="field"><label>Prénom</label><input type="text" id="about_firstname" placeholder="Prénom"/></div>
+            <div class="field"><label>Nom</label><input type="text" id="about_lastname" placeholder="Nom"/></div>
+          </div>
+          <div class="field-row single">
+            <div class="field"><label>Rôle / titre</label><input type="text" id="about_role" placeholder="Étudiant en Informatique Appliquée..."/></div>
+          </div>
+          <div class="field-row single">
+            <div class="field"><label>Badge sous la photo</label><input type="text" id="about_badge" placeholder="L2 · Info & Gestion en cours"/></div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title"><i class="fa-solid fa-align-left"></i> Biographie</div>
+          <div class="field-row single">
+            <div class="field"><label>Paragraphe 1</label><textarea id="about_p1"></textarea></div>
+          </div>
+          <div class="field-row single">
+            <div class="field"><label>Paragraphe 2</label><textarea id="about_p2"></textarea></div>
+          </div>
+          <div class="field-row single">
+            <div class="field"><label>Citation (en italique)</label><textarea id="about_quote"></textarea></div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title"><i class="fa-solid fa-rotate"></i> Animation Typing (sépare par virgule)</div>
+          <div class="field-row single">
+            <div class="field"><label>Mots à animer</label><input type="text" id="about_typing" placeholder="Développeur Web,Designer UI/UX,Admin Réseaux"/></div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title"><i class="fa-solid fa-file-pdf"></i> CV</div>
+          <div class="field-row">
+            <div class="field"><label>Nom du fichier CV (ex: cv.pdf)</label><input type="text" id="cv_filename" placeholder="cv.pdf"/></div>
+            <div class="field"><label>Nom téléchargé (ex: CV-Mon-Nom.pdf)</label><input type="text" id="cv_dlname" placeholder="CV-Votre-Nom.pdf"/></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SKILLS ── -->
+      <div class="tab-panel" id="tab-skills">
+        <div class="panel-title">Compétences</div>
+        <p class="panel-sub">Ajustez les pourcentages et noms de vos compétences.</p>
+
+        <div class="field-group" id="skillsGroup">
+          <div class="field-group-title"><i class="fa-solid fa-sliders"></i> Barres de compétences</div>
+          <div id="skillsList"></div>
+          <button class="btn-add" onclick="addSkill()"><i class="fa-solid fa-plus"></i> Ajouter une compétence</button>
+        </div>
+      </div>
+
+      <!-- ── PROJECTS ── -->
+      <div class="tab-panel" id="tab-projects">
+        <div class="panel-title">Projets</div>
+        <p class="panel-sub">Ajoutez, modifiez ou supprimez vos projets.</p>
+        <div id="projectsList"></div>
+        <button class="btn-add" onclick="addProject()"><i class="fa-solid fa-plus"></i> Ajouter un projet</button>
+      </div>
+
+      <!-- ── CERTIFICATIONS ── -->
+      <div class="tab-panel" id="tab-certifications">
+        <div class="panel-title">Certifications</div>
+        <p class="panel-sub">Gérez vos diplômes et badges.</p>
+        <div id="certsList"></div>
+        <button class="btn-add" onclick="addCert()"><i class="fa-solid fa-plus"></i> Ajouter une certification</button>
+      </div>
+
+      <!-- ── CONTACT ── -->
+      <div class="tab-panel" id="tab-contact">
+        <div class="panel-title">Contact</div>
+        <p class="panel-sub">Mettez à jour vos liens de contact et votre localisation.</p>
+
+        <div class="field-group">
+          <div class="field-group-title"><i class="fa-solid fa-address-book"></i> Liens</div>
+          <div class="field-row">
+            <div class="field"><label><i class="fa-solid fa-envelope" style="color:#EA4335;"></i> Email</label><input type="email" id="c_email" placeholder="votre@email.com"/></div>
+            <div class="field"><label><i class="fa-brands fa-linkedin" style="color:#0A66C2;"></i> LinkedIn URL</label><input type="text" id="c_linkedin" placeholder="https://linkedin.com/in/..."/></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label><i class="fa-brands fa-github" style="color:#1a1a1a;"></i> GitHub URL</label><input type="text" id="c_github" placeholder="https://github.com/..."/></div>
+            <div class="field"><label><i class="fa-brands fa-whatsapp" style="color:#25D366;"></i> WhatsApp (numéro intl)</label><input type="text" id="c_whatsapp" placeholder="221700000000"/></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label><i class="fa-solid fa-location-dot" style="color:#FF6B00;"></i> Localisation affichée</label><input type="text" id="c_location" placeholder="Dakar, Sénégal"/></div>
+            <div class="field"><label>Message WhatsApp pré-rempli</label><input type="text" id="c_wamsg" placeholder="Bonjour, je vous contacte depuis votre portfolio !"/></div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title"><i class="fa-solid fa-paper-plane"></i> Formulaire</div>
+          <div class="field-row single">
+            <div class="field"><label>Email de réception du formulaire</label><input type="email" id="c_formemail" placeholder="votre@email.com"/></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SETTINGS ── -->
+      <div class="tab-panel" id="tab-settings">
+        <div class="panel-title">Paramètres</div>
+        <p class="panel-sub">Configurez les options générales et la sécurité.</p>
+
+        <div class="field-group">
+          <div class="field-group-title"><i class="fa-solid fa-palette"></i> Général</div>
+          <div class="field-row">
+            <div class="field"><label>Titre de l'onglet (navigateur)</label><input type="text" id="s_title" placeholder="Portfolio — Informatique & Gestion"/></div>
+            <div class="field"><label>Nom affiché dans le footer</label><input type="text" id="s_footer_name" placeholder="Votre Nom"/></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Logo nav (texte avant le point)</label><input type="text" id="s_logo" placeholder="Dev"/></div>
+            <div class="field"><label>Couleur principale (hex)</label><input type="color" id="s_color" value="#FF6B00" style="height:42px;padding:.3rem;"/></div>
+          </div>
+        </div>
+
+        <div class="field-group pwd-section">
+          <div class="field-group-title"><i class="fa-solid fa-key"></i> Changer le mot de passe admin</div>
+          <div class="field-row">
+            <div class="field"><label>Ancien mot de passe</label><input type="password" id="old_pwd"/></div>
+            <div class="field"><label>Nouveau mot de passe</label><input type="password" id="new_pwd"/></div>
+          </div>
+          <button class="btn-add" onclick="changePwd()"><i class="fa-solid fa-floppy-disk"></i> Changer le mot de passe</button>
+          <p id="pwdMsg" style="font-size:.8rem;margin-top:.6rem;color:var(--success);display:none;"></p>
+        </div>
+      </div>
+
+      <!-- ── EXPORT ── -->
+      <div class="tab-panel" id="tab-export">
+        <div class="panel-title">Exporter les données</div>
+        <p class="panel-sub">Téléchargez un fichier JSON de sauvegarde ou importez-en un.</p>
+
+        <div class="field-group">
+          <div class="field-group-title"><i class="fa-solid fa-download"></i> Exporter</div>
+          <p style="color:var(--muted);font-size:.86rem;margin-bottom:1rem;">Téléchargez toutes vos données de configuration en JSON pour les sauvegarder ou les transférer.</p>
+          <button class="btn-save" onclick="exportJSON()"><i class="fa-solid fa-file-export"></i> Télécharger portfolio-data.json</button>
+        </div>
+
+        <div class="field-group" style="margin-top:1.2rem;">
+          <div class="field-group-title"><i class="fa-solid fa-upload"></i> Importer</div>
+          <p style="color:var(--muted);font-size:.86rem;margin-bottom:1rem;">Importez un fichier JSON précédemment exporté pour restaurer vos données.</p>
+          <input type="file" id="importFile" accept=".json" style="font-size:.84rem;" onchange="importJSON(this)"/>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"><i class="fa-solid fa-check-circle"></i> <span id="toastMsg">Données sauvegardées !</span></div>
+
+<script>
+/* ══════════════════════════════════════════
+   CONFIG — DEFAULT DATA
+══════════════════════════════════════════ */
+var DEFAULT = {
+  pwd: 'admin123',
+  hero_title1: 'Je transforme les idées',
+  hero_name:   'solutions numériques',
+  hero_title3: 'intelligentes.',
+  hero_subtitle: 'Étudiant en Informatique Appliquée à la Gestion des Entreprises en cours de formation · Développeur Web · Administration Réseaux',
+  hero_badge:  'Disponible pour un stage',
+  stat1_num:'5+', stat1_label:'Projets',
+  stat2_num:'10+',stat2_label:'Technologies',
+  stat3_num:'0+', stat3_label:'Certifications',
+  stat4_num:'L2', stat4_label:'Licence en cours',
+  about_firstname:'Prénom', about_lastname:'Nom',
+  about_role: 'Étudiant en Informatique Appliquée à la Gestion des Entreprises',
+  about_badge:'L2 · Info & Gestion en cours',
+  about_p1:'Curieux, rigoureux et orienté solutions, je suis étudiant en deuxième année de Licence en Informatique Appliquée à la Gestion des Entreprises.',
+  about_p2:'À l\'intersection du numérique et du monde des affaires, je développe des compétences solides en développement web, administration réseau et gestion d\'entreprise.',
+  about_quote:'"Mon profil hybride me permet de comprendre à la fois les enjeux techniques et stratégiques des organisations modernes."',
+  about_typing:'Développeur Web,Designer UI/UX,Admin Réseaux,Gestionnaire SI,Étudiant L2',
+  cv_filename:'cv.pdf', cv_dlname:'CV-Votre-Nom.pdf',
+  skills:[
+    {name:'HTML / CSS',   pct:90, category:'Prog'},
+    {name:'JavaScript',   pct:75, category:'Prog'},
+    {name:'Python',       pct:70, category:'Prog'},
+    {name:'PHP',          pct:65, category:'Prog'},
+    {name:'Java',         pct:60, category:'Prog'},
+    {name:'Windows Server',pct:75,category:'Réseau'},
+    {name:'Linux Ubuntu', pct:70, category:'Réseau'},
+    {name:'Admin Réseau', pct:65, category:'Réseau'},
+    {name:'Comptabilité', pct:75, category:'Gestion'},
+    {name:'Marketing Digital',pct:70,category:'Gestion'},
+    {name:'Finance',      pct:65, category:'Gestion'},
+    {name:'Management',   pct:70, category:'Gestion'}
+  ],
+  projects:[
+    {title:'Site Web d\'Entreprise',  desc:'Conception d\'un site vitrine responsive pour une PME locale avec formulaire de contact, galerie dynamique et interface moderne.',     techs:'HTML,CSS,JavaScript', icon:'fa-solid fa-globe'},
+    {title:'Infrastructure Réseau',   desc:'Simulation et déploiement d\'une architecture réseau complète : routeurs, commutateurs, VLAN, serveur DHCP et DNS.',                  techs:'Cisco,Windows Server,VLAN',    icon:'fa-solid fa-network-wired'},
+    {title:'Site E-commerce WordPress',desc:'Création d\'un site e-commerce fonctionnel avec catalogue produits, paiement simulé et optimisation SEO.',                          techs:'WordPress,WooCommerce,PHP',    icon:'fa-brands fa-wordpress'},
+    {title:'App Gestion de Stock',    desc:'Application desktop de gestion de stock : CRUD produits, génération de rapports et base de données locale embarquée.',              techs:'Python,SQLite,Tkinter',        icon:'fa-solid fa-boxes-stacked'}
+  ],
+  certs:[
+    {title:'Introduction to Cybersecurity', org:'Cisco NetAcad',   icon:'fa-solid fa-shield-halved'},
+    {title:'Python Essentials 1 & 2',       org:'Cisco NetAcad',   icon:'fa-brands fa-python'},
+    {title:'Responsive Web Design',         org:'freeCodeCamp',    icon:'fa-solid fa-mobile-screen-button'},
+    {title:'Digital Marketing Fundamentals',org:'Google Activate', icon:'fa-brands fa-google'}
+  ],
+  c_email:'votre@email.com', c_linkedin:'https://linkedin.com/in/votreprofil',
+  c_github:'https://github.com/votrepseudo', c_whatsapp:'221700000000',
+  c_location:'Dakar, Sénégal', c_wamsg:'Bonjour, je vous contacte depuis votre portfolio !',
+  c_formemail:'votre@email.com',
+  s_title:'Portfolio — Informatique & Gestion', s_footer_name:'Votre Nom',
+  s_logo:'Dev', s_color:'#FF6B00'
+};
+
+/* ══════════════════════════════════════════
+   LOAD / SAVE
+══════════════════════════════════════════ */
+function getData() {
+  try { return JSON.parse(localStorage.getItem('portfolio_data')) || Object.assign({},DEFAULT); }
+  catch(e){ return Object.assign({},DEFAULT); }
+}
+function setData(d){ localStorage.setItem('portfolio_data', JSON.stringify(d)); }
+
+/* ══════════════════════════════════════════
+   LOGIN
+══════════════════════════════════════════ */
+function tryLogin(){
+  var pwd = document.getElementById('pwdInput').value;
+  var d   = getData();
+  var stored = d.pwd || DEFAULT.pwd;
+  if(pwd === stored){
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('adminPanel').style.display='block';
+    loadAllFields();
+  } else {
+    document.getElementById('loginError').style.display='block';
+    document.getElementById('pwdInput').value='';
+    setTimeout(function(){ document.getElementById('loginError').style.display='none'; },2500);
+  }
+}
+function logout(){
+  document.getElementById('adminPanel').style.display='none';
+  document.getElementById('loginScreen').style.display='flex';
+  document.getElementById('pwdInput').value='';
+}
+
+/* ══════════════════════════════════════════
+   TABS
+══════════════════════════════════════════ */
+function showTab(name, el){
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.sidebar-item').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('tab-'+name).classList.add('active');
+  if(el) el.classList.add('active');
+}
+
+/* ══════════════════════════════════════════
+   LOAD ALL FIELDS
+══════════════════════════════════════════ */
+function loadAllFields(){
+  var d = getData();
+  // simple fields
+  var simpleFields = [
+    'hero_title1','hero_name','hero_title3','hero_subtitle','hero_badge',
+    'stat1_num','stat1_label','stat2_num','stat2_label','stat3_num','stat3_label','stat4_num','stat4_label',
+    'about_firstname','about_lastname','about_role','about_badge',
+    'about_p1','about_p2','about_quote','about_typing','cv_filename','cv_dlname',
+    'c_email','c_linkedin','c_github','c_whatsapp','c_location','c_wamsg','c_formemail',
+    's_title','s_footer_name','s_logo','s_color'
+  ];
+  simpleFields.forEach(function(k){
+    var el = document.getElementById(k);
+    if(el && d[k]!==undefined) el.value = d[k];
+  });
+  renderSkills(d.skills || DEFAULT.skills);
+  renderProjects(d.projects || DEFAULT.projects);
+  renderCerts(d.certs || DEFAULT.certs);
+}
+
+/* ══════════════════════════════════════════
+   SKILLS
+══════════════════════════════════════════ */
+function renderSkills(skills){
+  var list = document.getElementById('skillsList');
+  list.innerHTML = '';
+  skills.forEach(function(s,i){
+    var row = document.createElement('div');
+    row.className='skill-row';
+    row.innerHTML =
+      '<input type="text" value="'+escHtml(s.name)+'" placeholder="Nom compétence" oninput="updateSkillName('+i+',this.value)"/>'+
+      '<div style="display:flex;align-items:center;gap:.5rem;">'+
+        '<input type="range" min="0" max="100" value="'+s.pct+'" oninput="updateSkillPct('+i+',this.value,this)"/>'+
+        '<span class="skill-pct" id="spct'+i+'">'+s.pct+'%</span>'+
+      '</div>'+
+      '<button class="btn-remove" onclick="removeSkill('+i+')" title="Supprimer"><i class="fa-solid fa-trash"></i></button>';
+    list.appendChild(row);
+  });
+}
+function updateSkillName(i,v){ var d=getData(); d.skills[i].name=v; setData(d); }
+function updateSkillPct(i,v,el){ var d=getData(); d.skills[i].pct=parseInt(v); setData(d); document.getElementById('spct'+i).textContent=v+'%'; }
+function removeSkill(i){ var d=getData(); d.skills.splice(i,1); setData(d); renderSkills(d.skills); }
+function addSkill(){ var d=getData(); d.skills.push({name:'Nouvelle compétence',pct:50,category:'Autre'}); setData(d); renderSkills(d.skills); }
+
+/* ══════════════════════════════════════════
+   PROJECTS
+══════════════════════════════════════════ */
+function renderProjects(projects){
+  var list = document.getElementById('projectsList');
+  list.innerHTML='';
+  projects.forEach(function(p,i){
+    var card=document.createElement('div');
+    card.className='project-admin-card';
+    card.innerHTML=
+      '<div class="project-admin-header">'+
+        '<span class="project-admin-num">PROJET '+(i+1)+'</span>'+
+        '<button class="btn-remove" onclick="removeProject('+i+')" title="Supprimer projet"><i class="fa-solid fa-trash"></i></button>'+
+      '</div>'+
+      '<div class="field-row">'+
+        '<div class="field"><label>Titre</label><input type="text" value="'+escHtml(p.title)+'" oninput="updateProject('+i+',\'title\',this.value)"/></div>'+
+        '<div class="field"><label>Icône FA (ex: fa-solid fa-globe)</label><input type="text" value="'+escHtml(p.icon||'')+'" oninput="updateProject('+i+',\'icon\',this.value)"/></div>'+
+      '</div>'+
+      '<div class="field" style="margin-bottom:.8rem;"><label>Description</label><textarea oninput="updateProject('+i+',\'desc\',this.value)">'+escHtml(p.desc)+'</textarea></div>'+
+      '<div class="field"><label>Technologies (séparées par virgule)</label><input type="text" value="'+escHtml(p.techs)+'" oninput="updateProject('+i+',\'techs\',this.value)"/></div>';
+    list.appendChild(card);
+  });
+}
+function updateProject(i,k,v){ var d=getData(); d.projects[i][k]=v; setData(d); }
+function removeProject(i){ var d=getData(); d.projects.splice(i,1); setData(d); renderProjects(d.projects); }
+function addProject(){ var d=getData(); d.projects.push({title:'Nouveau Projet',desc:'Description...',techs:'Tech1,Tech2',icon:'fa-solid fa-code'}); setData(d); renderProjects(d.projects); }
+
+/* ══════════════════════════════════════════
+   CERTIFICATIONS
+══════════════════════════════════════════ */
+function renderCerts(certs){
+  var list=document.getElementById('certsList');
+  list.innerHTML='';
+  certs.forEach(function(c,i){
+    var card=document.createElement('div');
+    card.className='project-admin-card';
+    card.innerHTML=
+      '<div class="project-admin-header">'+
+        '<span class="project-admin-num">CERTIFICATION '+(i+1)+'</span>'+
+        '<button class="btn-remove" onclick="removeCert('+i+')" title="Supprimer"><i class="fa-solid fa-trash"></i></button>'+
+      '</div>'+
+      '<div class="field-row">'+
+        '<div class="field"><label>Titre</label><input type="text" value="'+escHtml(c.title)+'" oninput="updateCert('+i+',\'title\',this.value)"/></div>'+
+        '<div class="field"><label>Organisme</label><input type="text" value="'+escHtml(c.org)+'" oninput="updateCert('+i+',\'org\',this.value)"/></div>'+
+      '</div>'+
+      '<div class="field"><label>Icône FA</label><input type="text" value="'+escHtml(c.icon||'')+'" oninput="updateCert('+i+',\'icon\',this.value)"/></div>';
+    list.appendChild(card);
+  });
+}
+function updateCert(i,k,v){ var d=getData(); d.certs[i][k]=v; setData(d); }
+function removeCert(i){ var d=getData(); d.certs.splice(i,1); setData(d); renderCerts(d.certs); }
+function addCert(){ var d=getData(); d.certs.push({title:'Nouvelle Certification',org:'Organisme',icon:'fa-solid fa-certificate'}); setData(d); renderCerts(d.certs); }
+
+/* ══════════════════════════════════════════
+   SAVE ALL
+══════════════════════════════════════════ */
+function saveAll(){
+  var d = getData();
+  var simpleFields = [
+    'hero_title1','hero_name','hero_title3','hero_subtitle','hero_badge',
+    'stat1_num','stat1_label','stat2_num','stat2_label','stat3_num','stat3_label','stat4_num','stat4_label',
+    'about_firstname','about_lastname','about_role','about_badge',
+    'about_p1','about_p2','about_quote','about_typing','cv_filename','cv_dlname',
+    'c_email','c_linkedin','c_github','c_whatsapp','c_location','c_wamsg','c_formemail',
+    's_title','s_footer_name','s_logo','s_color'
+  ];
+  simpleFields.forEach(function(k){
+    var el=document.getElementById(k);
+    if(el) d[k]=el.value;
+  });
+  setData(d);
+  showToast('✅ Données sauvegardées avec succès !');
+}
+
+/* ══════════════════════════════════════════
+   CHANGE PASSWORD
+══════════════════════════════════════════ */
+function changePwd(){
+  var old=document.getElementById('old_pwd').value;
+  var nw=document.getElementById('new_pwd').value;
+  var d=getData();
+  var msg=document.getElementById('pwdMsg');
+  if(old!==(d.pwd||DEFAULT.pwd)){ msg.style.color='var(--danger)'; msg.textContent='❌ Ancien mot de passe incorrect'; msg.style.display='block'; return; }
+  if(nw.length<4){ msg.style.color='var(--danger)'; msg.textContent='❌ Le mot de passe doit avoir au moins 4 caractères'; msg.style.display='block'; return; }
+  d.pwd=nw; setData(d);
+  msg.style.color='var(--success)'; msg.textContent='✅ Mot de passe changé !'; msg.style.display='block';
+  document.getElementById('old_pwd').value=''; document.getElementById('new_pwd').value='';
+  setTimeout(function(){ msg.style.display='none'; },3000);
+}
+
+/* ══════════════════════════════════════════
+   EXPORT / IMPORT
+══════════════════════════════════════════ */
+function exportJSON(){
+  var d=getData();
+  var blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='portfolio-data.json'; a.click();
+  showToast('📦 Fichier JSON téléchargé !');
+}
+function importJSON(input){
+  var file=input.files[0]; if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      var d=JSON.parse(e.target.result);
+      setData(d); loadAllFields();
+      showToast('📥 Données importées avec succès !');
+    }catch(err){ alert('❌ Fichier JSON invalide'); }
+  };
+  reader.readAsText(file);
+}
+
+/* ══════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════ */
+function showToast(msg){
+  var t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); },3000);
+}
+
+/* ══════════════════════════════════════════
+   UTILS
+══════════════════════════════════════════ */
+function escHtml(str){
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Auto-save on input changes
+document.addEventListener('input', function(e){
+  if(e.target.closest('#adminPanel') && !e.target.closest('#loginScreen')){
+    clearTimeout(window._autoSave);
+    window._autoSave = setTimeout(saveAll, 1200);
+  }
+});
+</script>
+</body>
+</html>
