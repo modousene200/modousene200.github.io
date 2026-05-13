@@ -490,7 +490,7 @@ footer span { color:var(--orange); font-weight:600; }
           <span class="tag"><i class="fa-solid fa-chart-line"></i>Gestion</span>
           <span class="tag"><i class="fa-solid fa-database"></i>Systèmes d'info</span>
         </div>
-        <a href="cv.pdf" download="CV-Votre-Nom.pdf" class="btn-cv" id="d-cv-btn">
+        <a href="cv.pdf" download="CV-modou-sene.pdf" class="btn-cv" id="d-cv-btn">
           <i class="fa-solid fa-file-arrow-down"></i>
           <span>Télécharger mon CV</span>
         </a>
@@ -638,7 +638,7 @@ footer span { color:var(--orange); font-weight:600; }
         <div class="contact-links">
           <a href="mailto:msene6916@email.com" class="contact-link cl-email" id="d-c-email">
             <div class="contact-link-icon"><i class="fa-solid fa-envelope"></i></div>
-            <div class="contact-link-text"><span class="link-main">votre@email.com</span><small>Email · Réponse sous 24h</small></div>
+            <div class="contact-link-text"><span class="link-main">msene6916@email.com</span><small>Email · Réponse sous 24h</small></div>
           </a>
           <a href="https://www.linkedin.com/in/www.linkedin.com/in/modou-sene-908" target="_blank" rel="noopener" class="contact-link cl-linkedin" id="d-c-linkedin">
             <div class="contact-link-icon"><i class="fa-brands fa-linkedin-in"></i></div>
@@ -661,8 +661,8 @@ footer span { color:var(--orange); font-weight:600; }
       <div class="reveal">
         <div class="contact-form">
           <div class="form-row">
-            <div class="form-group"><label>Prénom</label><input type="text" id="f-prenom" placeholder="Saliou"/></div>
-            <div class="form-group"><label>Nom</label><input type="text" id="f-nom" placeholder="Sene"/></div>
+            <div class="form-group"><label>Prénom</label><input type="text" id="f-prenom" placeholder="saliou"/></div>
+            <div class="form-group"><label>Nom</label><input type="text" id="f-nom" placeholder="sene"/></div>
           </div>
           <div class="form-group"><label>Email</label><input type="email" id="f-email" placeholder="saliou@exemple.com"/></div>
           <div class="form-group"><label>Sujet</label><input type="text" id="f-sujet" placeholder="Proposition de stage / Projet..."/></div>
@@ -678,13 +678,21 @@ footer span { color:var(--orange); font-weight:600; }
 
 <!-- FOOTER -->
 <footer>
-  <p>Conçu avec <i class="fa-solid fa-heart" style="color:var(--orange);"></i> par <span id="d-footer-name">Votre Nom</span> &nbsp;·&nbsp; Étudiant en Informatique & Gestion &nbsp;·&nbsp; en cours de formation</p>
+  <p>Conçu avec <i class="fa-solid fa-heart" style="color:var(--orange);"></i> par <span id="d-footer-name">MODOU SENE</span> &nbsp;·&nbsp; Étudiant en Informatique & Gestion &nbsp;·&nbsp; en cours de formation</p>
 </footer>
 
 <script>
 /* ══════════════════════════════════════
    0. LOAD DATA FROM ADMIN (localStorage)
 ══════════════════════════════════════ */
+(function applyData(){
+  var raw = localStorage.getItem('portfolio_data');
+  if(!raw) return;
+  try {
+    var d = JSON.parse(raw);
+    function set(id,val){ var el=document.getElementById(id); if(el&&val!==undefined) el.textContent=val; }
+    function setHref(id,val){ var el=document.getElementById(id); if(el&&val) el.href=val; }
+    function setAttr(id,attr,val){ var el=document.getElementById(id); if(el&&val!==undefined) el.setAttribute(attr,val); }
 
     // Hero
     set('d-hero-title1', d.hero_t1||d.hero_title1||'');
@@ -1027,7 +1035,7 @@ document.getElementById('sendBtn').addEventListener('click',function(){
   var email=document.getElementById('f-email').value.trim();
   var sujet=document.getElementById('f-sujet').value.trim();
   var msg=document.getElementById('f-msg').value.trim();
-  if(!email||!msg){alert(' Veuillez remplir au moins votre email et votre message.');return;}
+  if(!email||!msg){alert('Veuillez remplir au moins votre email et votre message.');return;}
   var to = window._formEmail || 'votre@email.com';
   var sub=encodeURIComponent(sujet||'Message portfolio — '+prenom+' '+nom);
   var bod=encodeURIComponent('Bonjour,\n\nJe m\'appelle '+prenom+' '+nom+'.\n\n'+msg+'\n\nMon email : '+email);
