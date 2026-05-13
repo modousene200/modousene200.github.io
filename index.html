@@ -636,19 +636,19 @@ footer span { color:var(--orange); font-weight:600; }
         <h3>Discutons de votre projet</h3>
         <p>Actuellement en Licence 2, je suis à la recherche d'un stage, d'une mission freelance ou d'une opportunité professionnelle en développement web, administration des systèmes ou SI en entreprise.</p>
         <div class="contact-links">
-          <a href="mailto:msene6916@email.com" class="contact-link cl-email" id="d-c-email">
+          <a href="mailto:votre@email.com" class="contact-link cl-email" id="d-c-email">
             <div class="contact-link-icon"><i class="fa-solid fa-envelope"></i></div>
             <div class="contact-link-text"><span class="link-main">votre@email.com</span><small>Email · Réponse sous 24h</small></div>
           </a>
-          <a href="https://www.linkedin.com/in/modou-sene-908" target="_blank" rel="noopener" class="contact-link cl-linkedin" id="d-c-linkedin">
+          <a href="https://www.linkedin.com/in/votreprofil" target="_blank" rel="noopener" class="contact-link cl-linkedin" id="d-c-linkedin">
             <div class="contact-link-icon"><i class="fa-brands fa-linkedin-in"></i></div>
             <div class="contact-link-text"><span class="link-main">linkedin.com/in/votreprofil</span><small>LinkedIn · Réseau professionnel</small></div>
           </a>
-          <a href="https://github.com/modousene200" target="_blank" rel="noopener" class="contact-link cl-github" id="d-c-github">
+          <a href="https://github.com/votrepseudo" target="_blank" rel="noopener" class="contact-link cl-github" id="d-c-github">
             <div class="contact-link-icon"><i class="fa-brands fa-github"></i></div>
             <div class="contact-link-text"><span class="link-main">github.com/votrepseudo</span><small>GitHub · Voir mes dépôts</small></div>
           </a>
-          <a href="https://wa.me/221781372767?text=Bonjour%20depuis%20votre%20portfolio" target="_blank" rel="noopener" class="contact-link cl-whatsapp" id="d-c-whatsapp">
+          <a href="https://wa.me/221700000000?text=Bonjour%20depuis%20votre%20portfolio" target="_blank" rel="noopener" class="contact-link cl-whatsapp" id="d-c-whatsapp">
             <div class="contact-link-icon"><i class="fa-brands fa-whatsapp"></i></div>
             <div class="contact-link-text"><span class="link-main">+221 70 000 00 00</span><small>WhatsApp · Message direct</small></div>
           </a>
@@ -695,40 +695,40 @@ footer span { color:var(--orange); font-weight:600; }
     function setAttr(id,attr,val){ var el=document.getElementById(id); if(el&&val!==undefined) el.setAttribute(attr,val); }
 
     // Hero
-    set('d-hero-title1', d.hero_title1);
+    set('d-hero-title1', d.hero_t1||d.hero_title1||'');
     set('d-hero-name',   d.hero_name);
-    set('d-hero-title3', d.hero_title3);
-    set('d-hero-subtitle', d.hero_subtitle);
+    set('d-hero-title3', d.hero_t3||d.hero_title3||'');
+    set('d-hero-subtitle', d.hero_sub||d.hero_subtitle||'');
     set('d-hero-badge',  d.hero_badge);
-    set('d-stat1-num',d.stat1_num); set('d-stat1-label',d.stat1_label);
-    set('d-stat2-num',d.stat2_num); set('d-stat2-label',d.stat2_label);
-    set('d-stat3-num',d.stat3_num); set('d-stat3-label',d.stat3_label);
-    set('d-stat4-num',d.stat4_num); set('d-stat4-label',d.stat4_label);
+    set('d-stat1-num',d.s1n||d.stat1_num||''); set('d-stat1-label',d.s1l||d.stat1_label||'');
+    set('d-stat2-num',d.s2n||d.stat2_num||''); set('d-stat2-label',d.s2l||d.stat2_label||'');
+    set('d-stat3-num',d.s3n||d.stat3_num||''); set('d-stat3-label',d.s3l||d.stat3_label||'');
+    set('d-stat4-num',d.s4n||d.stat4_num||''); set('d-stat4-label',d.s4l||d.stat4_label||'');
 
     // About
-    set('d-about-name', (d.about_firstname||'')+' '+(d.about_lastname||''));
-    set('d-about-role', d.about_role);
-    set('d-about-badge', d.about_badge);
-    set('d-about-p1', d.about_p1);
-    set('d-about-p2', d.about_p2);
-    set('d-about-quote', d.about_quote);
-    if(d.about_typing){ window._typingWords = d.about_typing.split(',').map(function(w){return w.trim();}); }
+    var fn=d.a_fn||d.about_firstname||''; var ln=d.a_ln||d.about_lastname||''; set('d-about-name', (fn+' '+ln).trim());
+    set('d-about-role', d.a_role||d.about_role||'');
+    set('d-about-badge', d.a_badge||d.about_badge||'');
+    set('d-about-p1', d.a_p1||d.about_p1||'');
+    set('d-about-p2', d.a_p2||d.about_p2||'');
+    set('d-about-quote', d.a_quote||d.about_quote||'');
+    var tw=d.a_typing||d.about_typing||''; if(tw){ window._typingWords = tw.split(',').map(function(w){return w.trim();}); }
 
     // CV
     var cvBtn = document.getElementById('d-cv-btn');
-    if(cvBtn){ cvBtn.href = d.cv_filename||'cv.pdf'; cvBtn.download = d.cv_dlname||'CV.pdf'; }
+    if(cvBtn){ cvBtn.href = d.cv_file||d.cv_filename||'cv.pdf'; cvBtn.download = d.cv_dl||d.cv_dlname||'CV.pdf'; }
 
     // Contact links
     var el;
     el=document.getElementById('d-c-email'); if(el&&d.c_email){ el.href='mailto:'+d.c_email; el.querySelector('.link-main').textContent=d.c_email; }
     el=document.getElementById('d-c-linkedin'); if(el&&d.c_linkedin){ el.href=d.c_linkedin; el.querySelector('.link-main').textContent=d.c_linkedin.replace('https://',''); }
     el=document.getElementById('d-c-github'); if(el&&d.c_github){ el.href=d.c_github; el.querySelector('.link-main').textContent=d.c_github.replace('https://',''); }
-    el=document.getElementById('d-c-whatsapp'); if(el&&d.c_whatsapp){
-      var msg=encodeURIComponent(d.c_wamsg||'Bonjour depuis votre portfolio !');
-      el.href='https://wa.me/'+d.c_whatsapp+'?text='+msg;
-      el.querySelector('.link-main').textContent='+'+d.c_whatsapp;
+    var waNum=d.c_whatsapp||d.c_wa||''; el=document.getElementById('d-c-whatsapp'); if(el&&waNum){
+      var waMsg=encodeURIComponent(d.c_wamsg||'Bonjour depuis votre portfolio !');
+      el.href='https://wa.me/'+waNum+'?text='+waMsg;
+      el.querySelector('.link-main').textContent='+'+waNum;
     }
-    el=document.getElementById('d-c-location'); if(el&&d.c_location){ el.querySelector('.link-main').textContent=d.c_location; el.href='https://www.google.com/maps/place/'+encodeURIComponent(d.c_location); }
+    el=document.getElementById('d-c-location'); if(el&&(d.c_location||d.c_loc)){ el.querySelector('.link-main').textContent=( d.c_location||d.c_loc ); el.href='https://www.google.com/maps/place/'+encodeURIComponent(d.c_location||d.c_loc||'Dakar'); }
 
     // Form email
     if(d.c_formemail) window._formEmail = d.c_formemail;
@@ -739,7 +739,7 @@ footer span { color:var(--orange); font-weight:600; }
       var logo=document.querySelector('.nav-logo');
       if(logo) logo.innerHTML=d.s_logo+'<span>.</span>Portfolio';
     }
-    if(d.s_footer_name) set('d-footer-name', d.s_footer_name);
+    if(d.s_fname||d.s_footer_name) set('d-footer-name', d.s_fname||d.s_footer_name||'');
     if(d.s_color) document.documentElement.style.setProperty('--orange', d.s_color);
 
     // Skills
