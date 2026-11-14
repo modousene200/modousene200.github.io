@@ -3,7 +3,43 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Portfolio — Informatique & Gestion</title>
+<title>SENE TECH | Sites vitrines &amp; responsive – Modou Sène, Dakar</title>
+<meta name="description" content="SENE TECH, par Modou Sène (Dakar, Sénégal) : sites vitrines, intégration HTML/CSS/Bootstrap, sites responsive et maintenance web simple. Commandez sur Fiverr."/>
+<meta name="author" content="Modou Sène"/>
+<meta name="theme-color" content="#FF6B00"/>
+<link rel="canonical" href="https://modousene200.github.io/"/>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="SENE TECH"/>
+<meta property="og:locale" content="fr_FR"/>
+<meta property="og:title" content="SENE TECH | Sites vitrines &amp; responsive – Modou Sène"/>
+<meta property="og:description" content="Sites vitrines, intégration HTML/CSS/Bootstrap, sites responsive et maintenance web simple. Commandez sur Fiverr ou écrivez sur WhatsApp."/>
+<meta property="og:url" content="https://modousene200.github.io/"/>
+<meta property="og:image" content="https://modousene200.github.io/assets/og-sene-tech.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="SENE TECH – sites vitrines, HTML/CSS/Bootstrap, responsive"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="SENE TECH | Sites vitrines &amp; responsive – Modou Sène"/>
+<meta name="twitter:description" content="Sites vitrines, intégration HTML/CSS/Bootstrap, sites responsive et maintenance web simple."/>
+<meta name="twitter:image" content="https://modousene200.github.io/assets/og-sene-tech.png"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type":"WebSite","@id":"https://modousene200.github.io/#website","url":"https://modousene200.github.io/","name":"SENE TECH","inLanguage":"fr"},
+    {"@type":"Person","@id":"https://modousene200.github.io/#person","name":"Modou Sène","url":"https://modousene200.github.io/","image":"https://modousene200.github.io/assets/modou.webp","address":{"@type":"PostalAddress","addressLocality":"Dakar","addressCountry":"SN"},"sameAs":["https://www.fiverr.com/modousene376","https://github.com/modousene200","https://www.linkedin.com/in/modou-sene-908","https://www.facebook.com/modou.sene"]},
+    {"@type":"ProfessionalService","@id":"https://modousene200.github.io/#business","name":"SENE TECH","url":"https://modousene200.github.io/","founder":{"@id":"https://modousene200.github.io/#person"},"address":{"@type":"PostalAddress","addressLocality":"Dakar","addressCountry":"SN"},"sameAs":["https://www.fiverr.com/modousene376"],"makesOffer":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Création de sites vitrines"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Intégration HTML/CSS/Bootstrap"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Création de sites web responsive"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Maintenance web simple (petites corrections, mises à jour de contenus, ajustements visuels)"}}
+    ]}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <!-- Google tag (gtag.js) -->
@@ -30,6 +66,10 @@
   --radius:      16px;
   --font-head:   'Orbitron', sans-serif;
   --font-body:   'Exo 2', sans-serif;
+  --orange-rgb:  255,107,0;
+  --orange-btn:  #C94F00;      /* fond des boutons : blanc dessus = contraste AA */
+  --orange-text: #B94700;      /* orange pour petits textes sur fond clair (contraste AA) */
+  --orange-text-lg: #E05500;   /* orange pour grands titres sur fond clair */
 }
 
 /* ══ DARK MODE ══ */
@@ -41,6 +81,8 @@ body.dark {
   --muted: #9090b8;
   --card:  #16161f;
   --shadow: 0 4px 24px rgba(0,0,0,0.35);
+  --orange-text: #FF7A1A;
+  --orange-text-lg: #FF6B00;
 }
 body.dark nav {
   background: rgba(13,13,18,0.92);
@@ -90,61 +132,6 @@ body.dark .about-highlight { background: rgba(255,107,0,0.08); border-color: rgb
   box-shadow: 0 0 12px rgba(255,107,0,0.25);
 }
 
-.palette-wrap { position: relative; }
-
-.palette-trigger {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255,107,0,0.25);
-  background: transparent;
-  color: var(--text);
-  font-size: 0.9rem;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-}
-.palette-trigger:hover {
-  background: var(--orange-glow);
-  border-color: var(--orange);
-  transform: scale(1.1);
-  box-shadow: 0 0 12px rgba(255,107,0,0.25);
-}
-
-.palette-dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  background: var(--card);
-  border: 1px solid rgba(255,107,0,0.15);
-  border-radius: 50px;
-  padding: 0.4rem 0.6rem;
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-  opacity: 0;
-  transform: translateY(-8px) scale(0.95);
-  pointer-events: none;
-  transition: opacity 0.25s, transform 0.25s;
-  z-index: 300;
-  white-space: nowrap;
-}
-.palette-dropdown.open {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: all;
-}
-
-.pal-dot {
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-  flex-shrink: 0;
-}
-.pal-dot:hover { transform: scale(1.25); box-shadow: 0 0 8px rgba(0,0,0,0.25); }
-.pal-dot.active { border-color: #fff; box-shadow: 0 0 0 2px var(--orange); transform: scale(1.15); }
 
 /* ══ HERO GREETING ══ */
 .hero-greeting {
@@ -159,8 +146,8 @@ body.dark .about-highlight { background: rgba(255,107,0,0.08); border-color: rgb
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font-family: var(--font-body); overflow-x: hidden; }
-@media (pointer: fine) { body { cursor: none; } }
-.theme-toggle, .palette-trigger, .pal-dot { cursor: pointer !important; }
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) { body { cursor: none; } }
+.theme-toggle { cursor: pointer !important; }
 a { text-decoration: none; cursor: pointer !important; }
 button { cursor: pointer !important; }
 img { max-width: 100%; display: block; }
@@ -183,7 +170,7 @@ img { max-width: 100%; display: block; }
   background: rgba(255,107,0,0.32);
   display: none;
 }
-@media (pointer: fine) {
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
   #cursor-orb { display: block; }
   #cursor-trail { display: block; }
 }
@@ -200,7 +187,7 @@ nav {
 }
 .nav-logo { font-family:var(--font-head); font-size:1.05rem; font-weight:700; color:var(--text); letter-spacing:2px; transition: text-shadow .3s; }
 .nav-logo:hover { text-shadow: 0 0 20px rgba(255,107,0,0.4); }
-.nav-logo span { color:var(--orange); }
+.nav-logo span { color: var(--orange-text); }
 .nav-links { display:flex; gap:.3rem; list-style:none; }
 .nav-links a {
   display:block; color:var(--muted); font-size:.72rem; letter-spacing:1.5px;
@@ -212,11 +199,11 @@ nav {
   height:2px; background:var(--orange); border-radius:2px; transition: left .28s, right .28s;
 }
 .nav-links a:hover, .nav-links a.active {
-  color:var(--orange); background:rgba(255,107,0,0.08);
+  color: var(--orange-text); background:rgba(255,107,0,0.08);
   box-shadow:0 3px 14px rgba(255,107,0,0.12); transform:translateY(-2px);
 }
 .nav-links a:hover::after, .nav-links a.active::after { left:14%; right:14%; }
-.hamburger { display:none; flex-direction:column; gap:5px; padding:6px; }
+.hamburger { display:none; flex-direction:column; gap:5px; padding:6px; background:none; border:0; cursor:pointer; border-radius:8px; }
 .hamburger span { width:22px; height:2px; background:var(--text); border-radius:2px; transition:all .3s; display:block; }
 .hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
 .hamburger.open span:nth-child(2) { opacity:0; }
@@ -232,7 +219,7 @@ nav {
 .nav-drawer.open { display:flex; }
 .nav-drawer li { list-style:none; }
 .nav-drawer li a { display:block; color:var(--muted); font-size:.82rem; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; padding:.75rem 1rem; border-radius:10px; transition: color .2s, background .2s; }
-.nav-drawer li a:hover { color:var(--orange); background:var(--orange-glow); }
+.nav-drawer li a:hover { color: var(--orange-text); background:var(--orange-glow); }
 @keyframes drawerSlide { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
 
 /* ══ HERO ══ */
@@ -299,7 +286,7 @@ nav {
               0 0 100px rgba(255,107,0,0.15);
 }
 .hero-photo-circle img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-.hero-photo-circle i { font-size: 5rem; color: var(--orange); opacity: .8; }
+.hero-photo-circle i { font-size: 5rem; color: var(--orange-text); opacity: .8; }
 
 /* Anneau lumineux */
 .orbit-ring {
@@ -360,7 +347,7 @@ body.dark .orbit-icon-item { background: #1a1a26; }
 .hsb-wa   { background: #25D366; }
 .hsb-li   { background: #0A66C2; }
 .hsb-gh   { background: #1a1a1a; }
-.hsb-mail { background: var(--orange); }
+.hsb-mail { background: var(--orange-btn); }
 
 /* ── TEXT SIDE ── */
 .hero-text-side {
@@ -370,7 +357,7 @@ body.dark .orbit-icon-item { background: #1a1a26; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: .5rem;
   background: var(--orange-glow); border: 1px solid rgba(255,107,0,0.35);
-  color: var(--orange); font-size: .68rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--orange-text); font-size: .68rem; letter-spacing: 3px; text-transform: uppercase;
   padding: .4rem 1.2rem; border-radius: 100px; margin-bottom: 1.2rem;
 }
 .hero-greeting {
@@ -384,13 +371,13 @@ body.dark .orbit-icon-item { background: #1a1a26; }
   font-weight: 900; line-height: 1.08;
   margin-bottom: .8rem; color: var(--text);
 }
-.hero-title .name { color: var(--orange); }
+.hero-title .name { color: var(--orange-text); }
 .hero-role-line {
   display: flex; align-items: center; gap: .5rem;
   font-size: clamp(.82rem, 1.5vw, 1rem);
   color: var(--muted); margin-bottom: .5rem; font-weight: 500;
 }
-.hero-role-line i { color: var(--orange); font-size: .8rem; }
+.hero-role-line i { color: var(--orange-text); font-size: .8rem; }
 .hero-subtitle {
   font-size: clamp(.8rem, 1.5vw, .95rem);
   color: var(--muted); margin-bottom: 2rem;
@@ -409,26 +396,25 @@ body.dark .orbit-icon-item { background: #1a1a26; }
 }
 .btn::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(255,255,255,0.28) 0%, transparent 65%); opacity: 0; transition: opacity .35s; }
 .btn:hover::after { opacity: 1; }
-.btn-primary { background: var(--orange); color: #fff; }
+.btn-primary { background: var(--orange-btn); color: #fff; }
 .btn-primary:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 35px rgba(255,107,0,0.38); }
 .btn-outline { background: transparent; color: var(--text); border: 2px solid rgba(26,26,46,0.18); }
-.btn-outline:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 26px rgba(255,107,0,0.14); }
+.btn-outline:hover { border-color: var(--orange); color: var(--orange-text); transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 26px rgba(255,107,0,0.14); }
 
 .hero-stats {
   display: flex; gap: 2rem; flex-wrap: wrap;
 }
 .stat { text-align: left; }
-.stat-num { font-family: var(--font-head); font-size: 1.75rem; font-weight: 700; color: var(--orange); display: block; }
+.stat-num { font-family: var(--font-head); font-size: 1.75rem; font-weight: 700; color: var(--orange-text); display: block; }
 .stat-label { font-size: .66rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-top: .2rem; }
 
-#scene3d { display: none; }
 
 /* ══ SECTIONS ══ */
 section { padding:5.5rem 1.5rem; }
 .container { max-width:1080px; margin:0 auto; }
-.section-tag { font-family:var(--font-head); font-size:.6rem; color:var(--orange); letter-spacing:4px; text-transform:uppercase; margin-bottom:.4rem; }
+.section-tag { font-family:var(--font-head); font-size:.6rem; color: var(--orange-text); letter-spacing:4px; text-transform:uppercase; margin-bottom:.4rem; }
 .section-title { font-family:var(--font-head); font-size:clamp(1.4rem,3.5vw,2.2rem); font-weight:700; margin-bottom:.8rem; color:var(--text); }
-.section-title span { color:var(--orange); }
+.section-title span { color: var(--orange-text); }
 .section-line { width:55px; height:3px; background:linear-gradient(90deg,var(--orange),transparent); margin-bottom:2.8rem; border-radius:2px; }
 
 /* ══ ABOUT ══ */
@@ -477,7 +463,7 @@ section { padding:5.5rem 1.5rem; }
   font-size: .84rem; font-weight: 600;
   letter-spacing: .5px;
   border: 1.5px solid var(--orange);
-  color: var(--orange);
+  color: var(--orange-text);
   background: transparent;
   transition: background .25s, border-color .25s, color .25s, transform .25s, box-shadow .25s;
   cursor: pointer !important;
@@ -490,12 +476,12 @@ section { padding:5.5rem 1.5rem; }
   box-shadow: 0 8px 22px rgba(255,107,0,0.30);
 }
 .about-btn-primary {
-  background: var(--orange);
+  background: var(--orange-btn);
   color: #fff;
 }
 .about-btn-primary:hover {
-  background: var(--orange2);
-  border-color: var(--orange2);
+  background: #A83F00;
+  border-color: #A83F00;
 }
 
 @media (max-width: 768px) {
@@ -514,12 +500,12 @@ section { padding:5.5rem 1.5rem; }
 }
 .skill-card:hover { transform:translateY(-8px) scale(1.01); box-shadow:0 22px 55px rgba(255,107,0,0.13); }
 .skill-card-header { display:flex; align-items:center; gap:.75rem; margin-bottom:1.4rem; }
-.skill-card-header > i { font-size:1.3rem; color:var(--orange); width:32px; text-align:center; }
+.skill-card-header > i { font-size:1.3rem; color: var(--orange-text); width:32px; text-align:center; }
 .skill-card h3 { font-family:var(--font-head); font-size:.75rem; color:var(--text); letter-spacing:1.5px; text-transform:uppercase; }
 .skill-item { margin-bottom:1rem; }
 .skill-item-label { display:flex; justify-content:space-between; align-items:center; font-size:.8rem; color:var(--muted); margin-bottom:.38rem; }
 .skill-item-label .s-left { display:flex; align-items:center; gap:6px; }
-.skill-item-label span:last-child { color:var(--orange); font-weight:700; font-size:.78rem; }
+.skill-item-label span:last-child { color: var(--orange-text); font-weight:700; font-size:.78rem; }
 .skill-bar { height:6px; background:var(--bg3); border-radius:10px; overflow:hidden; }
 .skill-fill { height:100%; background:linear-gradient(90deg,var(--orange),var(--orange2)); border-radius:10px; width:0; transition:width 1.5s cubic-bezier(.4,0,.2,1); }
 
@@ -572,7 +558,7 @@ section { padding:5.5rem 1.5rem; }
   width: 100%; height: 220px;
   display: flex; align-items: center; justify-content: center;
   background: linear-gradient(135deg,var(--bg3),var(--bg2));
-  font-size: 3rem; color: var(--orange); opacity: .6;
+  font-size: 3rem; color: var(--orange-text); opacity: .6;
 }
 
 /* Body */
@@ -595,7 +581,7 @@ section { padding:5.5rem 1.5rem; }
 .project-tag {
   background: var(--bg3);
   border: 1px solid rgba(255,107,0,0.20);
-  color: var(--orange);
+  color: var(--orange-text);
   font-size: .62rem; font-weight: 700;
   letter-spacing: 1px; text-transform: uppercase;
   padding: .28rem .75rem; border-radius: 100px;
@@ -621,7 +607,7 @@ section { padding:5.5rem 1.5rem; }
   padding: .25rem .65rem; border-radius: 7px;
   transition: background .2s, color .2s, transform .2s;
 }
-.tech-badge:hover { background: var(--orange-glow); color: var(--orange); transform: translateY(-1px); }
+.tech-badge:hover { background: var(--orange-glow); color: var(--orange-text); transform: translateY(-1px); }
 
 /* Bouton voir le projet */
 .project-link {
@@ -630,7 +616,7 @@ section { padding:5.5rem 1.5rem; }
   padding: .6rem 1.2rem;
   background: transparent;
   border: 1.5px solid rgba(255,107,0,0.30);
-  color: var(--orange);
+  color: var(--orange-text);
   border-radius: 9px;
   font-size: .78rem; font-weight: 700;
   letter-spacing: .5px; text-transform: uppercase;
@@ -654,7 +640,7 @@ section { padding:5.5rem 1.5rem; }
 .cert-card:hover .cert-icon { transform:rotate(-8deg) scale(1.1); }
 .cert-icon i { font-size:1.15rem; color:#fff; }
 .cert-info h4 { font-size:.84rem; font-weight:600; margin-bottom:.2rem; color:var(--text); }
-.cert-info span { font-size:.72rem; color:var(--orange); letter-spacing:1px; font-weight:500; }
+.cert-info span { font-size:.72rem; color: var(--orange-text); letter-spacing:1px; font-weight:500; }
 
 /* ══ CONTACT ══ */
 #contact { background:var(--bg2); }
@@ -675,7 +661,7 @@ section { padding:5.5rem 1.5rem; }
 .cl-linkedin:hover { color:#0A66C2; }
 .cl-github:hover   { color:#1a1a1a; background:#f6f6f6!important; }
 .cl-whatsapp:hover { color:#25D366; }
-.cl-location:hover { color:var(--orange); }
+.cl-location:hover { color: var(--orange-text); }
 .contact-link-text { display:flex; flex-direction:column; }
 .contact-link-text small { font-size:.68rem; color:var(--muted); font-weight:400; }
 .contact-form { display:flex; flex-direction:column; gap:.9rem; }
@@ -688,7 +674,7 @@ section { padding:5.5rem 1.5rem; }
 
 /* ══ FOOTER ══ */
 footer { text-align:center; padding:1.8rem; border-top:1px solid rgba(255,107,0,0.09); color:var(--muted); font-size:.78rem; background:var(--bg); }
-footer span { color:var(--orange); font-weight:600; }
+footer span { color: var(--orange-text); font-weight:600; }
 
 /* ══ REVEAL ══ */
 .reveal { opacity:0; transform:translateY(28px); transition:opacity .65s ease, transform .65s ease; }
@@ -758,21 +744,133 @@ footer span { color:var(--orange); font-weight:600; }
   .about-photo-circle { width:170px; height:170px; }
   .about-photo-circle i { font-size:3.8rem; }
   .section-title { font-size:clamp(1.15rem,6vw,1.6rem); }
-  #scene3d { width:180px; height:65px; }
+}
+
+/* ══════════ SENE TECH — AMÉLIORATIONS (nov. 2026) ══════════ */
+html { scroll-padding-top: 72px; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.skip-link { position:fixed; left:1rem; top:-70px; z-index:10000; background:var(--orange-btn); color:#fff; padding:.6rem 1rem; border-radius:8px; font-weight:600; transition:top .2s; }
+.skip-link:focus { top:.8rem; }
+:focus-visible { outline:3px solid var(--orange-text-lg); outline-offset:3px; }
+.hero-title .name, .section-title span, .stat-num, .nav-logo span { color: var(--orange-text-lg); }
+
+/* Boutons */
+.btn-primary:hover { background:#A83F00; }
+body.dark .btn-outline { border-color:rgba(255,255,255,.28); }
+.btn-whatsapp { background:transparent; color:var(--text); border:2px solid #1FA855; }
+.btn-whatsapp i { color:#1FA855; font-size:1.05em; }
+.btn-whatsapp:hover { background:#1FA855; color:#fff; transform:translateY(-3px) scale(1.03); box-shadow:0 8px 26px rgba(31,168,85,.25); }
+.btn-whatsapp:hover i { color:#fff; }
+.btn { min-height:44px; }
+
+/* Navigation */
+.nav-controls { gap:.6rem; }
+.nav-fiverr { padding:.5rem 1rem; font-size:.7rem; letter-spacing:.8px; white-space:nowrap; min-height:40px; }
+.theme-toggle { width:40px; height:40px; }
+.hamburger { min-width:44px; min-height:44px; align-items:center; justify-content:center; }
+.nav-drawer li.drawer-cta a, .nav-drawer li.drawer-wa a { display:flex; align-items:center; justify-content:center; gap:.5rem; margin-top:.4rem; }
+.nav-drawer li.drawer-cta a, .nav-drawer li.drawer-cta a:hover { background:var(--orange-btn); color:#fff; }
+.nav-drawer li.drawer-wa a, .nav-drawer li.drawer-wa a:hover { background:transparent; color:var(--text); border:2px solid #1FA855; }
+.nav-drawer li.drawer-wa i { color:#1FA855; }
+@media (max-width:1180px) {
+  .nav-fiverr span { display:none; }
+  .nav-fiverr { padding:.55rem .75rem; }
+  .nav-links a { padding:.44rem .6rem; letter-spacing:1px; }
+}
+@media (min-width:769px) and (max-width:900px) {
+  nav { padding:0 1rem; }
+  .nav-logo { font-size:.95rem; letter-spacing:1px; }
+  .nav-links { gap:0; }
+  .nav-links a { padding:.4rem .4rem; font-size:.6rem; letter-spacing:.3px; }
+}
+@media (max-width:768px) { .nav-fiverr { display:none; } }
+
+/* Accueil */
+.hero-subtitle { margin-bottom:1.1rem; }
+.hero-brand-line { font-size:clamp(.82rem,1.5vw,.95rem); color:var(--text); margin:0 0 1.8rem; line-height:1.7; padding-left:.9rem; border-left:3px solid var(--orange); max-width:34rem; }
+@media (max-width:480px) {
+  .hero-badge { letter-spacing:1.5px; font-size:.64rem; padding:.4rem .9rem; }
+}
+@media (max-width:768px) {
+  .hero-brand-line { border-left:0; padding-left:0; margin-left:auto; margin-right:auto; text-align:center; }
+  .hero-social-btn { width:42px; height:42px; }
+}
+
+/* Services */
+#services { background:var(--bg2); }
+.services-intro { color:var(--muted); max-width:640px; margin:0 0 2rem; line-height:1.75; font-size:.95rem; }
+.services-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; }
+.service-card { background:var(--card); border:1px solid rgba(255,107,0,.14); border-radius:var(--radius); padding:1.6rem 1.4rem; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:.8rem; transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, border-color .3s; }
+.service-card:hover { transform:translateY(-6px); border-color:var(--orange); box-shadow:0 14px 40px rgba(255,107,0,.14); }
+.service-icon { width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg,var(--orange-btn),var(--orange)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.2rem; }
+.service-card h3 { font-family:var(--font-head); font-size:.84rem; line-height:1.5; color:var(--text); }
+.service-card p { color:var(--muted); font-size:.86rem; line-height:1.7; }
+.service-points { list-style:none; display:flex; flex-direction:column; gap:.45rem; margin:.2rem 0 .4rem; flex:1; }
+.service-points li { position:relative; padding-left:1.25rem; font-size:.8rem; color:var(--text); line-height:1.55; }
+.service-points li::before { content:'\f00c'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; left:0; top:.1rem; font-size:.68rem; color:var(--orange-text); }
+.service-note { font-size:.76rem; color:var(--muted); border-left:3px solid var(--orange); padding-left:.7rem; line-height:1.55; }
+.service-cta { display:inline-flex; align-items:center; gap:.5rem; font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--orange-text); margin-top:auto; padding:.5rem 0; min-height:44px; }
+.service-cta:hover { text-decoration:underline; }
+.process { margin-top:3rem; }
+.process-title { font-family:var(--font-head); font-size:1rem; color:var(--text); margin-bottom:1.2rem; }
+.process-steps { list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; }
+.process-steps li { background:var(--card); border:1px solid rgba(255,107,0,.12); border-radius:13px; padding:1.2rem; display:flex; flex-direction:column; gap:.4rem; }
+.process-steps li > span { width:30px; height:30px; border-radius:50%; background:var(--orange-btn); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--font-head); font-size:.8rem; font-weight:700; }
+.process-steps strong { color:var(--text); font-size:.92rem; }
+.process-steps p { color:var(--muted); font-size:.82rem; line-height:1.6; }
+.services-cta { margin-top:2.4rem; background:linear-gradient(135deg,#1a1a2e,#2b1a10); border-radius:var(--radius); padding:1.8rem; display:flex; align-items:center; justify-content:space-between; gap:1.2rem; flex-wrap:wrap; }
+.services-cta p { color:#f0f0ff; font-size:1rem; font-weight:500; max-width:34rem; line-height:1.55; }
+.services-cta-btns { display:flex; gap:.8rem; flex-wrap:wrap; }
+.services-cta .btn-whatsapp { color:#fff; border-color:#25D366; }
+.services-cta .btn-whatsapp i { color:#25D366; }
+@media (max-width:1100px) { .services-grid, .process-steps { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px) {
+  .services-grid, .process-steps { grid-template-columns:1fr; }
+  .services-cta { padding:1.4rem; }
+  .services-cta-btns { width:100%; }
+  .services-cta-btns .btn { width:100%; justify-content:center; }
+}
+
+/* Contact */
+.cl-fiverr .contact-link-icon { background:var(--orange-btn); }
+.form-error { color:#B42318; background:rgba(180,35,24,.08); border:1px solid rgba(180,35,24,.3); padding:.6rem .8rem; border-radius:9px; font-size:.82rem; margin-bottom:.8rem; line-height:1.5; }
+body.dark .form-error { color:#ff9a8f; }
+.form-actions { display:flex; gap:.7rem; flex-wrap:wrap; }
+.form-actions .btn { flex:1 1 180px; justify-content:center; padding:.95rem 1rem; font-size:.78rem; }
+.form-note { font-size:.72rem; color:var(--muted); margin-top:.8rem; line-height:1.5; }
+
+/* WhatsApp flottant (ordinateur) + barre d'action (mobile) */
+.wa-float { position:fixed; right:1.2rem; bottom:1.2rem; z-index:150; width:56px; height:56px; border-radius:50%; background:#1FA855; color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.7rem; box-shadow:0 8px 24px rgba(0,0,0,.25); transition:transform .25s; }
+.wa-float:hover { transform:scale(1.08); }
+.mobile-cta { display:none; }
+@media (max-width:768px) {
+  .wa-float { display:none; }
+  .mobile-cta { display:flex; gap:.6rem; position:fixed; left:0; right:0; bottom:0; z-index:180; padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom)); background:rgba(255,255,255,.96); backdrop-filter:blur(14px); border-top:1px solid rgba(255,107,0,.2); box-shadow:0 -6px 24px rgba(0,0,0,.08); }
+  body.dark .mobile-cta { background:rgba(13,13,18,.96); }
+  .mobile-cta .btn { flex:1; justify-content:center; padding:.75rem .5rem; font-size:.72rem; letter-spacing:.3px; white-space:nowrap; }
+  .mobile-cta .btn-primary { flex:1.7; }
+  body { padding-bottom:calc(68px + env(safe-area-inset-bottom)); }
+}
+
+/* Mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
 }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Aller au contenu</a>
 
 <!-- CURSOR -->
-<div id="cursor-orb"></div>
-<div id="cursor-trail"></div>
+<div id="cursor-orb" aria-hidden="true"></div>
+<div id="cursor-trail" aria-hidden="true"></div>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">Dev<span>.</span>Portfolio</div>
+<nav aria-label="Navigation principale">
+  <a class="nav-logo" href="#hero" aria-label="SENE TECH — retour à l'accueil">SENE<span>.</span>TECH</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#hero">Accueil</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#about">À Propos</a></li>
     <li><a href="#skills">Compétences</a></li>
     <li><a href="#projects">Projets</a></li>
@@ -780,38 +878,32 @@ footer span { color:var(--orange); font-weight:600; }
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-controls">
-    <div class="palette-wrap" id="paletteWrap">
-      <button class="palette-trigger" id="paletteTrigger" aria-label="Couleur">
-        <span class="pal-icon-preview" id="palIconPreview" style="width:14px;height:14px;border-radius:50%;background:var(--orange);display:inline-block;box-shadow:0 0 6px rgba(255,107,0,0.5);transition:background 0.3s;"></span>
-      </button>
-      <div class="palette-dropdown" id="paletteDropdown">
-        <button class="pal-dot" data-color="#FF6B00" style="background:#FF6B00;"></button>
-        <button class="pal-dot" data-color="#6C63FF" style="background:#6C63FF;"></button>
-        <button class="pal-dot" data-color="#00B4D8" style="background:#00B4D8;"></button>
-        <button class="pal-dot" data-color="#22C55E" style="background:#22C55E;"></button>
-        <button class="pal-dot" data-color="#EF4444" style="background:#EF4444;"></button>
-      </div>
-    </div>
-    <button class="theme-toggle" id="themeToggle" aria-label="Theme">
-      <i class="fa-solid fa-moon" id="themeIcon"></i>
+    <a class="btn btn-primary nav-fiverr" href="https://www.fiverr.com/modousene376" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i><span>Commander sur Fiverr</span></a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Basculer entre mode clair et mode sombre" aria-pressed="false">
+      <i class="fa-solid fa-moon" id="themeIcon" aria-hidden="true"></i>
     </button>
   </div>
-  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  <button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- MOBILE DRAWER -->
 <ul class="nav-drawer" id="navDrawer">
   <li><a href="#hero">Accueil</a></li>
+  <li><a href="#services">Services</a></li>
   <li><a href="#about">À Propos</a></li>
   <li><a href="#skills">Compétences</a></li>
   <li><a href="#projects">Projets</a></li>
   <li><a href="#certifications">Certifications</a></li>
   <li><a href="#contact">Contact</a></li>
+  <li class="drawer-cta"><a href="https://www.fiverr.com/modousene376" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>Commander sur Fiverr</a></li>
+  <li class="drawer-wa"><a href="https://wa.me/221781372767?text=Bonjour%20SENE%20TECH%2C%20j%27ai%20vu%20votre%20portfolio%20et%20je%20souhaite%20discuter%20d%27un%20projet%20de%20site%20web." target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Écrire sur WhatsApp</a></li>
 </ul>
+
+<main id="main">
 
 <!-- HERO -->
 <section id="hero">
-  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
   <div class="corner-deco tl"></div>
   <div class="corner-deco tr"></div>
   <div class="corner-deco bl"></div>
@@ -821,25 +913,30 @@ footer span { color:var(--orange); font-weight:600; }
 
     <!-- TEXTE GAUCHE -->
     <div class="hero-text-side">
-      <div class="hero-badge"><i class="fa-solid fa-circle-check"></i>&nbsp;<span id="d-hero-badge">Disponible pour un stage</span></div>
+      <div class="hero-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>&nbsp;<span>Disponible pour vos projets web</span></div>
       <p class="hero-greeting">Bonjour, je suis</p>
-      <h1 class="hero-title">Modou <span class="name" id="d-hero-name">Sène</span></h1>
+      <h1 class="hero-title">Modou <span class="name">Sène</span><span class="sr-only"> — SENE TECH, création de sites web</span></h1>
       <div class="hero-role-line">
         <i class="fa-solid fa-code"></i>
         <span id="heroRoleTyping"></span><span class="typing-cursor" style="height:.9em;"></span>
       </div>
       <p class="hero-subtitle" id="d-hero-subtitle">Étudiant en Informatique Appliquée à la Gestion des Entreprises, passionné par le développement web, les réseaux et les systèmes d'information.</p>
+      <p class="hero-brand-line"><strong>SENE TECH</strong> — sites vitrines, intégration HTML/CSS/Bootstrap et sites responsive pour présenter votre activité.</p>
       <div class="hero-cta">
-        <a href="cv.pdf" download class="btn btn-primary"><i class="fa-solid fa-file-arrow-down"></i>Télécharger CV</a>
-        <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-envelope"></i>Me contacter</a>
+        <a href="https://www.fiverr.com/modousene376" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>Commander sur Fiverr</a>
+        <a href="https://wa.me/221781372767?text=Bonjour%20SENE%20TECH%2C%20j%27ai%20vu%20votre%20portfolio%20et%20je%20souhaite%20discuter%20d%27un%20projet%20de%20site%20web." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>WhatsApp</a>
+        <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-envelope" aria-hidden="true"></i>Me contacter</a>
       </div>
+      <!-- Bouton « Télécharger CV » masqué temporairement (cv.pdf absent du dépôt).
+           Pour le réactiver : ajouter cv.pdf à la racine du dépôt puis insérer
+           <a href="cv.pdf" download class="btn btn-outline">Télécharger CV</a> dans .hero-cta -->
       <!-- Réseaux sociaux sous les boutons -->
       <div class="hero-socials">
-        <a href="https://www.facebook.com/modou.sene" target="_blank" class="hero-social-btn hsb-fb" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://wa.me/221781372767" target="_blank" class="hero-social-btn hsb-wa" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://www.linkedin.com/in/modou-sene-908" target="_blank" class="hero-social-btn hsb-li" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://github.com/modousene200" target="_blank" class="hero-social-btn hsb-gh" title="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="mailto:msene6916@gmail.com" class="hero-social-btn hsb-mail" title="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://www.facebook.com/modou.sene" target="_blank" rel="noopener noreferrer" class="hero-social-btn hsb-fb" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://wa.me/221781372767" target="_blank" rel="noopener noreferrer" class="hero-social-btn hsb-wa" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/in/modou-sene-908" target="_blank" rel="noopener noreferrer" class="hero-social-btn hsb-li" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/modousene200" target="_blank" rel="noopener noreferrer" class="hero-social-btn hsb-gh" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:msene6916@gmail.com" class="hero-social-btn hsb-mail" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
       </div>
       <div class="hero-stats" style="margin-top:2rem;">
         <div class="stat"><span class="stat-num" id="d-stat1-num">5+</span><span class="stat-label" id="d-stat1-label">Projets</span></div>
@@ -862,7 +959,7 @@ footer span { color:var(--orange); font-weight:600; }
               📸 Pour ajouter ta photo : remplace le <i> par
              
             -->
-            <img src="img.jpeg" alt="Modou Sène"/>
+            <img src="assets/modou.webp" alt="Modou Sène, développeur web – SENE TECH" width="640" height="853" fetchpriority="high" decoding="async"/>
           </div>
           <!-- Icônes orbitales (JS les positionne) -->
           <div class="orbit-icons" id="orbitIcons"></div>
@@ -871,7 +968,65 @@ footer span { color:var(--orange); font-weight:600; }
     </div>
 
   </div>
-  <canvas id="scene3d" width="300" height="110" style="display:none;"></canvas>
+</section>
+
+<!-- SERVICES -->
+<section id="services" aria-labelledby="services-title">
+  <div class="container">
+    <p class="section-tag">// Services</p>
+    <h2 class="section-title" id="services-title">Les services <span>SENE TECH</span></h2>
+    <div class="section-line"></div>
+    <p class="services-intro">Je conçois des sites simples, clairs et adaptés à tous les écrans pour présenter votre activité. Voici ce que je propose.</p>
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-store" aria-hidden="true"></i></div>
+        <h3>Création de sites vitrines</h3>
+        <p>Un site clair pour présenter votre activité, vos services et vos coordonnées, avec un accès direct à votre contact ou à WhatsApp.</p>
+        <ul class="service-points"><li>Pages d'accueil, présentation, services et contact</li><li>Structure claire et lisible</li><li>Boutons d'appel à l'action (contact, WhatsApp)</li></ul>
+        <a class="service-cta" href="https://www.fiverr.com/modousene376" target="_blank" rel="noopener noreferrer">Commander sur Fiverr <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon"><i class="fa-brands fa-html5" aria-hidden="true"></i></div>
+        <h3>Intégration HTML/CSS/Bootstrap</h3>
+        <p>Je transforme votre maquette ou vos consignes en pages HTML/CSS propres, avec Bootstrap pour une mise en page solide.</p>
+        <ul class="service-points"><li>Code HTML/CSS organisé et lisible</li><li>Grille et composants Bootstrap (menus, cartes, formulaires)</li><li>À partir d'une maquette ou de consignes écrites</li></ul>
+        <a class="service-cta" href="https://www.fiverr.com/modousene376" target="_blank" rel="noopener noreferrer">Commander sur Fiverr <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></div>
+        <h3>Sites web responsive</h3>
+        <p>Votre site s'affiche correctement sur téléphone, tablette et ordinateur.</p>
+        <ul class="service-points"><li>Mise en page pensée d'abord pour le mobile</li><li>Menus, images et textes qui s'adaptent à l'écran</li><li>Vérification sur plusieurs tailles d'écran</li></ul>
+        <a class="service-cta" href="https://www.fiverr.com/modousene376" target="_blank" rel="noopener noreferrer">Commander sur Fiverr <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
+        <h3>Maintenance web simple</h3>
+        <p>Des petites interventions sur un site existant pour le garder à jour.</p>
+        <ul class="service-points"><li>Petites corrections</li><li>Mises à jour de contenus (textes, images, coordonnées)</li><li>Ajustements visuels (couleurs, espacements, affichage mobile)</li></ul>
+        <p class="service-note">Périmètre volontairement limité : pas de refonte complète ni de développement avancé.</p>
+        <a class="service-cta" href="https://www.fiverr.com/modousene376" target="_blank" rel="noopener noreferrer">Commander sur Fiverr <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+    </div>
+
+    <div class="process reveal">
+      <h3 class="process-title">Comment se passe une commande</h3>
+      <ol class="process-steps">
+        <li><span>1</span><strong>Brief</strong><p>Vous décrivez votre activité et ce que vous attendez du site.</p></li>
+        <li><span>2</span><strong>Cadrage</strong><p>Nous précisons ensemble le contenu et le périmètre de la commande.</p></li>
+        <li><span>3</span><strong>Réalisation</strong><p>Je construis les pages et je vérifie l'affichage sur mobile et ordinateur.</p></li>
+        <li><span>4</span><strong>Livraison</strong><p>Je vous livre le site et nous ajustons les détails selon la commande.</p></li>
+      </ol>
+    </div>
+
+    <div class="services-cta reveal">
+      <p>Un projet de site ? Passez commande sur Fiverr ou écrivez-moi directement sur WhatsApp.</p>
+      <div class="services-cta-btns">
+        <a href="https://www.fiverr.com/modousene376" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>Commander sur Fiverr</a>
+        <a href="https://wa.me/221781372767?text=Bonjour%20SENE%20TECH%2C%20j%27ai%20vu%20votre%20portfolio%20et%20je%20souhaite%20discuter%20d%27un%20projet%20de%20site%20web." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>WhatsApp</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ABOUT -->
@@ -880,7 +1035,7 @@ footer span { color:var(--orange); font-weight:600; }
     <div class="about-card reveal">
       <h2>À propos</h2>
       <p>
-        Je suis <strong>Modou Sène</strong>, étudiant en <strong>Informatique Appliquée à la Gestion des Entreprises</strong> (Licence 2 en cours), a l'institut supperieur d'informatique de Dakar, Sénégal. Je développe une double compétence qui me permet d'aborder chaque projet avec une vision à la fois <strong>technique et métier</strong> : je ne conçois pas seulement des applications — je comprends les problématiques organisationnelles qu'elles sont censées résoudre.
+        Je suis <strong>Modou Sène</strong>, étudiant en <strong>Informatique Appliquée à la Gestion des Entreprises</strong> (Licence 2 en cours), à l'Institut Supérieur d'Informatique de Dakar (ISI), Sénégal. Je développe une double compétence qui me permet d'aborder chaque projet avec une vision à la fois <strong>technique et métier</strong> : je ne conçois pas seulement des applications — je comprends les problématiques organisationnelles qu'elles sont censées résoudre.
         <br><br>
         Passionné par le développement web, je conçois des applications complètes — <strong>dashboards interactifs, systèmes de gestion et sites e-commerce</strong> — en mobilisant mes compétences en PHP, MySQL, HTML, CSS et JavaScript. Mon approche repose sur : compréhension du besoin, rigueur analytique, et attention au détail pour livrer des solutions véritablement utiles aux organisations modernes.
       </p>
@@ -888,9 +1043,11 @@ footer span { color:var(--orange); font-weight:600; }
         <a href="#certifications" class="about-btn about-btn-primary">
           <i class="fa-solid fa-certificate"></i> Mes certifications
         </a>
-        <a href="cv.pdf" download="CV-Modou-Sene.pdf" class="about-btn">
-          <i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV
+        <a href="#services" class="about-btn">
+          <i class="fa-solid fa-briefcase" aria-hidden="true"></i> Mes services
         </a>
+        <!-- Bouton « Télécharger mon CV » masqué temporairement (cv.pdf absent du dépôt).
+             Pour le réactiver : <a href="cv.pdf" download="CV-Modou-Sene.pdf" class="about-btn">Télécharger mon CV</a> -->
       </div>
     </div>
   </div>
@@ -939,7 +1096,7 @@ footer span { color:var(--orange); font-weight:600; }
           <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-item-label"><span class="s-left"><i class="fa-solid fa-network-wired" style="color:var(--orange);font-size:.95rem;"></i>Administration Réseau</span><span>65%</span></div>
+          <div class="skill-item-label"><span class="s-left"><i class="fa-solid fa-network-wired" style="color: var(--orange-text);font-size:.95rem;"></i>Administration Réseau</span><span>65%</span></div>
           <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
         </div>
         <div class="skill-item">
@@ -983,9 +1140,8 @@ footer span { color:var(--orange); font-weight:600; }
       <!-- Projet 1 -->
       <div class="project-card reveal">
         <div class="project-img-wrap">
-          <img src="projet-w" alt="Site Web Entreprise" class="project-img"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="project-img-placeholder" style="display:none;"><i class="fa-solid fa-globe"></i></div>
+          <!-- Image à ajouter : <img src="assets/NOM-DU-FICHIER.jpg" alt="Site Web Entreprise" class="project-img" /> -->
+          <div class="project-img-placeholder" style="display:flex;" role="img" aria-label="Site Web Entreprise"><i class="fa-solid fa-globe"></i></div>
         </div>
         <div class="project-body">
           <div class="project-header">
@@ -998,16 +1154,15 @@ footer span { color:var(--orange); font-weight:600; }
             <span class="tech-badge">JavaScript</span>
             <span class="tech-badge">PHP</span>
           </div>
-          <a href="#" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Voir le projet</a>
+          <!-- Lien « Voir le projet » masqué (pas d'URL valide). Pour le réactiver : <a href="URL_DU_PROJET" target="_blank" rel="noopener" class="project-link">Voir le projet</a> -->
         </div>
       </div>
 
       <!-- Projet 2 -->
       <div class="project-card reveal">
         <div class="project-img-wrap">
-          <img src="img/projet-reseau.jpg" alt="Infrastructure Réseau" class="project-img"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="project-img-placeholder" style="display:none;"><i class="fa-solid fa-network-wired"></i></div>
+          <!-- Image à ajouter : <img src="assets/NOM-DU-FICHIER.jpg" alt="Infrastructure Réseau" class="project-img" /> -->
+          <div class="project-img-placeholder" style="display:flex;" role="img" aria-label="Infrastructure Réseau"><i class="fa-solid fa-network-wired"></i></div>
         </div>
         <div class="project-body">
           <div class="project-header">
@@ -1021,16 +1176,15 @@ footer span { color:var(--orange); font-weight:600; }
             <span class="tech-badge">VLAN</span>
             <span class="tech-badge">DHCP/DNS</span>
           </div>
-          <a href="#" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Voir le projet</a>
+          <!-- Lien « Voir le projet » masqué (pas d'URL valide). Pour le réactiver : <a href="URL_DU_PROJET" target="_blank" rel="noopener" class="project-link">Voir le projet</a> -->
         </div>
       </div>
 
       <!-- Projet 3 -->
       <div class="project-card reveal">
         <div class="project-img-wrap">
-          <img src="img/projet-wordpress.jpg" alt="Site E-commerce" class="project-img"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="project-img-placeholder" style="display:none;"><i class="fa-brands fa-wordpress"></i></div>
+          <!-- Image à ajouter : <img src="assets/NOM-DU-FICHIER.jpg" alt="Site E-commerce" class="project-img" /> -->
+          <div class="project-img-placeholder" style="display:flex;" role="img" aria-label="Site E-commerce"><i class="fa-brands fa-wordpress"></i></div>
         </div>
         <div class="project-body">
           <div class="project-header">
@@ -1044,16 +1198,15 @@ footer span { color:var(--orange); font-weight:600; }
             <span class="tech-badge">PHP</span>
             <span class="tech-badge">SEO</span>
           </div>
-          <a href="#" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Voir le projet</a>
+          <!-- Lien « Voir le projet » masqué (pas d'URL valide). Pour le réactiver : <a href="URL_DU_PROJET" target="_blank" rel="noopener" class="project-link">Voir le projet</a> -->
         </div>
       </div>
 
       <!-- Projet 4 -->
       <div class="project-card reveal">
         <div class="project-img-wrap">
-          <img src="img/projet-stock.jpg" alt="App Gestion Stock" class="project-img"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="project-img-placeholder" style="display:none;"><i class="fa-solid fa-boxes-stacked"></i></div>
+          <!-- Image à ajouter : <img src="assets/NOM-DU-FICHIER.jpg" alt="App Gestion Stock" class="project-img" /> -->
+          <div class="project-img-placeholder" style="display:flex;" role="img" aria-label="App Gestion Stock"><i class="fa-solid fa-boxes-stacked"></i></div>
         </div>
         <div class="project-body">
           <div class="project-header">
@@ -1066,14 +1219,14 @@ footer span { color:var(--orange); font-weight:600; }
             <span class="tech-badge">SQLite</span>
             <span class="tech-badge">Tkinter</span>
           </div>
-          <a href="#" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Voir le projet</a>
+          <!-- Lien « Voir le projet » masqué (pas d'URL valide). Pour le réactiver : <a href="URL_DU_PROJET" target="_blank" rel="noopener" class="project-link">Voir le projet</a> -->
         </div>
       </div>
 
       <!-- Projet 5 — Bambey Sérère TV -->
       <div class="project-card reveal">
         <div class="project-img-wrap">
-          <img src="projet-web.jpg" alt="Bambey Sérère TV" class="project-img"
+          <img src="assets/bambey-sereretv.webp" loading="lazy" decoding="async" width="1354" height="594" alt="Bambey Sérère TV" class="project-img"
             style="object-fit:contain; padding:1.5rem; background:#0d0d12;"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
           <div class="project-img-placeholder" style="display:none;"><i class="fa-brands fa-youtube" style="color:#FF0000;"></i></div>
@@ -1125,21 +1278,25 @@ footer span { color:var(--orange); font-weight:600; }
     <div class="contact-wrapper">
       <div class="contact-info reveal">
         <h3>Discutons de votre projet</h3>
-        <p>Actuellement en Licence 2, je suis à la recherche d'un stage, d'une mission freelance ou d'une opportunité professionnelle en développement web, administration des systèmes ou SI en entreprise.</p>
+        <p>Actuellement en Licence 2, je suis à la recherche d'un stage, d'une alternance, d'une mission freelance ou d'une opportunité professionnelle en développement web, administration des systèmes ou SI en entreprise.</p>
         <div class="contact-links">
+          <a href="https://www.fiverr.com/modousene376" target="_blank" rel="noopener noreferrer" class="contact-link cl-fiverr">
+            <div class="contact-link-icon"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i></div>
+            <div class="contact-link-text"><span class="link-main">Commander sur Fiverr</span><small>Profil SENE TECH · modousene376</small></div>
+          </a>
           <a href="mailto:msene6916@gmail.com" class="contact-link cl-email" id="d-c-email">
             <div class="contact-link-icon"><i class="fa-solid fa-envelope"></i></div>
             <div class="contact-link-text"><span class="link-main">msene6916@gmail.com</span><small>Email · Réponse sous 24h</small></div>
           </a>
           <a href="https://www.linkedin.com/in/modou-sene-908" target="_blank" rel="noopener" class="contact-link cl-linkedin" id="d-c-linkedin">
             <div class="contact-link-icon"><i class="fa-brands fa-linkedin-in"></i></div>
-            <div class="contact-link-text"><small>LinkedIn · Réseau professionnel</small></div>
+            <div class="contact-link-text"><span class="link-main">LinkedIn</span><small>Réseau professionnel</small></div>
           </a>
           <a href="https://github.com/modousene200" target="_blank" rel="noopener" class="contact-link cl-github" id="d-c-github">
             <div class="contact-link-icon"><i class="fa-brands fa-github"></i></div>
-            <div class="contact-link-text"><small>GitHub · Voir mes dépôts</small></div>
+            <div class="contact-link-text"><span class="link-main">GitHub</span><small>Voir mes dépôts</small></div>
           </a>
-          <a href="https://wa.me/221781372767?text=Bonjour%20depuis%20votre%20portfolio" target="_blank" rel="noopener" class="contact-link cl-whatsapp" id="d-c-whatsapp">
+          <a href="https://wa.me/221781372767?text=Bonjour%20SENE%20TECH%2C%20je%20vous%20contacte%20depuis%20votre%20portfolio%20au%20sujet%20d%27un%20projet." target="_blank" rel="noopener" class="contact-link cl-whatsapp" id="d-c-whatsapp">
             <div class="contact-link-icon"><i class="fa-brands fa-whatsapp"></i></div>
             <div class="contact-link-text"><span class="link-main">+221 78 137 27 67</span><small>WhatsApp · Message direct</small></div>
           </a>
@@ -1150,91 +1307,71 @@ footer span { color:var(--orange); font-weight:600; }
         </div>
       </div>
       <div class="reveal">
-        <div class="contact-form">
+        <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
-            <div class="form-group"><label>Prénom</label><input type="text" id="f-prenom" placeholder="Jean"/></div>
-            <div class="form-group"><label>Nom</label><input type="text" id="f-nom" placeholder="Dupont"/></div>
+            <div class="form-group"><label for="f-prenom">Prénom</label><input type="text" id="f-prenom" name="prenom" autocomplete="given-name" placeholder="Jean"/></div>
+            <div class="form-group"><label for="f-nom">Nom</label><input type="text" id="f-nom" name="nom" autocomplete="family-name" placeholder="Dupont"/></div>
           </div>
-          <div class="form-group"><label>Email</label><input type="email" id="f-email" placeholder="jean@exemple.com"/></div>
-          <div class="form-group"><label>Sujet</label><input type="text" id="f-sujet" placeholder="Proposition de stage / Projet..."/></div>
-          <div class="form-group"><label>Message</label><textarea id="f-msg" placeholder="Bonjour, je souhaite vous contacter pour..."></textarea></div>
-          <button class="btn btn-primary" id="sendBtn" style="width:100%;padding:1rem;font-size:.88rem;justify-content:center;">
-            <i class="fa-solid fa-paper-plane"></i>&nbsp;Envoyer le message
-          </button>
-        </div>
+          <div class="form-group"><label for="f-email">Email</label><input type="email" id="f-email" name="email" autocomplete="email" placeholder="jean@exemple.com" aria-describedby="f-error"/></div>
+          <div class="form-group"><label for="f-sujet">Sujet</label><input type="text" id="f-sujet" name="sujet" placeholder="Projet de site web, stage, alternance…"/></div>
+          <div class="form-group"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Bonjour, je souhaite vous contacter pour..." aria-describedby="f-error"></textarea></div>
+          <p class="form-error" id="f-error" role="alert" hidden></p>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="sendBtn"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>Envoyer par e-mail</button>
+            <button type="button" class="btn btn-whatsapp" id="sendWa"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Envoyer par WhatsApp</button>
+          </div>
+          <p class="form-note">Votre message s'ouvre dans votre application e-mail ou WhatsApp : rien n'est envoyé avant que vous ne validiez.</p>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
-  <p>Conçu avec <i class="fa-solid fa-heart" style="color:var(--orange);"></i> par <span id="d-footer-name">Modou Sène</span> &nbsp;·&nbsp; Étudiant en Informatique & Gestion &nbsp;·&nbsp; en cours de formation</p>
+  <p><strong>SENE TECH</strong> &nbsp;·&nbsp; Conçu avec <i class="fa-solid fa-heart" style="color: var(--orange-text);" aria-hidden="true"></i> par <span>Modou Sène</span> &nbsp;·&nbsp; Étudiant en Informatique & Gestion &nbsp;·&nbsp; en cours de formation</p>
 </footer>
 
+<a class="wa-float" href="https://wa.me/221781372767?text=Bonjour%20SENE%20TECH%2C%20j%27ai%20vu%20votre%20portfolio%20et%20je%20souhaite%20discuter%20d%27un%20projet%20de%20site%20web." target="_blank" rel="noopener noreferrer" aria-label="Écrire à SENE TECH sur WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+<div class="mobile-cta" role="group" aria-label="Actions rapides">
+  <a class="btn btn-primary" href="https://www.fiverr.com/modousene376" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>Commander sur Fiverr</a>
+  <a class="btn btn-whatsapp" href="https://wa.me/221781372767?text=Bonjour%20SENE%20TECH%2C%20j%27ai%20vu%20votre%20portfolio%20et%20je%20souhaite%20discuter%20d%27un%20projet%20de%20site%20web." target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>WhatsApp</a>
+</div>
+
 <script>
-/* ══════════════════════════════════════
-   0. LOAD DATA FROM ADMIN (localStorage)
-══════════════════════════════════════ */
-(function applyData(){
-  var raw = localStorage.getItem('portfolio_data');
-  if(!raw) return;
-  try {
-    var d = JSON.parse(raw);
-    function set(id,val){ var el=document.getElementById(id); if(el&&val!==undefined) el.textContent=val; }
-    function setHref(id,val){ var el=document.getElementById(id); if(el&&val) el.href=val; }
+/* ══ PRÉFÉRENCES ══ */
+var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var finePointer  = window.matchMedia('(pointer: fine)').matches;
+var isSmall      = window.matchMedia('(max-width: 768px)').matches;
 
-    set('d-hero-name',   d.hero_name);
-    set('d-hero-subtitle', d.hero_sub||d.hero_subtitle||'');
-    set('d-hero-badge',  d.hero_badge);
-    set('d-stat1-num',d.s1n||''); set('d-stat1-label',d.s1l||'');
-    set('d-stat2-num',d.s2n||''); set('d-stat2-label',d.s2l||'');
-    set('d-stat3-num',d.s3n||''); set('d-stat3-label',d.s3l||'');
-    set('d-stat4-num',d.s4n||''); set('d-stat4-label',d.s4l||'');
-
-    var fn=d.a_fn||''; var ln=d.a_ln||''; set('d-about-name', (fn+' '+ln).trim());
-    set('d-about-role', d.a_role||'');
-    set('d-about-badge', d.a_badge||'');
-    set('d-about-p1', d.a_p1||'');
-    set('d-about-p2', d.a_p2||'');
-    set('d-about-quote', d.a_quote||'');
-    var tw=d.a_typing||''; if(tw){ window._typingWords = tw.split(',').map(function(w){return w.trim();}); }
-
-    var cvBtn = document.getElementById('d-cv-btn');
-    if(cvBtn){ cvBtn.href = d.cv_file||'cv.pdf'; cvBtn.download = d.cv_dl||'CV.pdf'; }
-
-    var el;
-    el=document.getElementById('d-c-email'); if(el&&d.c_email){ el.href='mailto:'+d.c_email; el.querySelector('.link-main').textContent=d.c_email; }
-    el=document.getElementById('d-c-linkedin'); if(el&&d.c_linkedin){ el.href=d.c_linkedin; el.querySelector('.link-main').textContent=d.c_linkedin.replace('https://',''); }
-    el=document.getElementById('d-c-github'); if(el&&d.c_github){ el.href=d.c_github; el.querySelector('.link-main').textContent=d.c_github.replace('https://',''); }
-    var waNum=d.c_whatsapp||''; el=document.getElementById('d-c-whatsapp'); if(el&&waNum){ el.href='https://wa.me/'+waNum; el.querySelector('.link-main').textContent='+'+waNum; }
-    el=document.getElementById('d-c-location'); if(el&&d.c_location){ el.querySelector('.link-main').textContent=d.c_location; }
-    if(d.c_formemail) window._formEmail = d.c_formemail;
-    if(d.s_title) document.title = d.s_title;
-    if(d.s_fname) set('d-footer-name', d.s_fname);
-    if(d.s_color) document.documentElement.style.setProperty('--orange', d.s_color);
-  } catch(e){ console.warn('Portfolio data load error:', e); }
-})();
-
-/* ══ CURSOR ══ */
+/* ══ CURSOR (ordinateur uniquement) ══ */
 var orb=document.getElementById('cursor-orb');
 var trail=document.getElementById('cursor-trail');
-var mx=0,my=0,tx=0,ty=0;
-document.addEventListener('mousemove',function(e){ mx=e.clientX; my=e.clientY; orb.style.left=mx+'px'; orb.style.top=my+'px'; });
-document.addEventListener('mousedown',function(){ orb.style.width='42px'; orb.style.height='42px'; });
-document.addEventListener('mouseup',function(){ orb.style.width='26px'; orb.style.height='26px'; });
-function trailLoop(){ tx+=(mx-tx)*0.13; ty+=(my-ty)*0.13; trail.style.left=tx+'px'; trail.style.top=ty+'px'; requestAnimationFrame(trailLoop); }
-trailLoop();
-document.querySelectorAll('a,button,input,textarea,.tag,.tech-badge').forEach(function(el){
-  el.addEventListener('mouseenter',function(){ orb.style.width='40px'; orb.style.height='40px'; });
-  el.addEventListener('mouseleave',function(){ orb.style.width='26px'; orb.style.height='26px'; });
-});
+if(finePointer && !reduceMotion && orb && trail){
+  var mx=0,my=0,tx=0,ty=0;
+  document.addEventListener('mousemove',function(e){ mx=e.clientX; my=e.clientY; orb.style.left=mx+'px'; orb.style.top=my+'px'; });
+  document.addEventListener('mousedown',function(){ orb.style.width='42px'; orb.style.height='42px'; });
+  document.addEventListener('mouseup',function(){ orb.style.width='26px'; orb.style.height='26px'; });
+  (function trailLoop(){ tx+=(mx-tx)*0.13; ty+=(my-ty)*0.13; trail.style.left=tx+'px'; trail.style.top=ty+'px'; requestAnimationFrame(trailLoop); })();
+  document.querySelectorAll('a,button,input,textarea,.tag,.tech-badge').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ orb.style.width='40px'; orb.style.height='40px'; });
+    el.addEventListener('mouseleave',function(){ orb.style.width='26px'; orb.style.height='26px'; });
+  });
+}
 
 /* ══ HAMBURGER ══ */
 var hamburger=document.getElementById('hamburger');
 var navDrawer=document.getElementById('navDrawer');
-hamburger.addEventListener('click',function(){ hamburger.classList.toggle('open'); navDrawer.classList.toggle('open'); });
-navDrawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ hamburger.classList.remove('open'); navDrawer.classList.remove('open'); }); });
+function setMenu(open){
+  hamburger.classList.toggle('open',open); navDrawer.classList.toggle('open',open);
+  hamburger.setAttribute('aria-expanded',open?'true':'false');
+  hamburger.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+}
+hamburger.addEventListener('click',function(){ setMenu(!navDrawer.classList.contains('open')); });
+navDrawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ setMenu(false); }); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') setMenu(false); });
 
 /* ══ ACTIVE NAV ══ */
 var allLinks=document.querySelectorAll('.nav-links a, .nav-drawer a');
@@ -1252,19 +1389,16 @@ function Dot(){this.reset();}
 Dot.prototype.reset=function(){ this.x=Math.random()*W; this.y=Math.random()*H; this.r=Math.random()*1.8+0.4; this.vx=(Math.random()-0.5)*0.38; this.vy=(Math.random()-0.5)*0.38; this.a=Math.random()*0.28+0.06; this.c=Math.random()>0.5?'#FF6B00':'#FF8C00'; };
 Dot.prototype.move=function(){ this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset(); };
 Dot.prototype.draw=function(){ hx.save(); hx.globalAlpha=this.a; hx.fillStyle=this.c; hx.beginPath(); hx.arc(this.x,this.y,this.r,0,Math.PI*2); hx.fill(); hx.restore(); };
-var dots=[]; for(var i=0;i<110;i++) dots.push(new Dot());
+var dots=[]; for(var i=0;i<(isSmall?40:110);i++) dots.push(new Dot());
 var fShapes=[{px:.12,py:.28,r:44,sp:.003,ph:0},{px:.88,py:.18,r:26,sp:.004,ph:1},{px:.72,py:.72,r:58,sp:.002,ph:2},{px:.08,py:.78,r:32,sp:.005,ph:3}];
 var ht=0;
-function heroLoop(){ hx.clearRect(0,0,W,H); ht++; fShapes.forEach(function(s){ var cx=s.px*W,cy=s.py*H+Math.sin(ht*s.sp+s.ph)*55; hx.save(); hx.globalAlpha=.045; hx.strokeStyle='#FF6B00'; hx.lineWidth=1.5; hx.beginPath(); hx.arc(cx,cy,s.r,0,Math.PI*2); hx.stroke(); hx.globalAlpha=.012; hx.fillStyle='#FF6B00'; hx.fill(); hx.restore(); }); for(var i=0;i<dots.length;i++){ for(var j=i+1;j<dots.length;j++){ var dx=dots[i].x-dots[j].x,dy=dots[i].y-dots[j].y,d=Math.sqrt(dx*dx+dy*dy); if(d<88){ hx.save(); hx.globalAlpha=(1-d/88)*.08; hx.strokeStyle='#FF6B00'; hx.lineWidth=.5; hx.beginPath(); hx.moveTo(dots[i].x,dots[i].y); hx.lineTo(dots[j].x,dots[j].y); hx.stroke(); hx.restore(); } } } dots.forEach(function(d){d.move();d.draw();}); requestAnimationFrame(heroLoop); }
+function heroLoop(){ hx.clearRect(0,0,W,H); ht++; fShapes.forEach(function(s){ var cx=s.px*W,cy=s.py*H+Math.sin(ht*s.sp+s.ph)*55; hx.save(); hx.globalAlpha=.045; hx.strokeStyle='#FF6B00'; hx.lineWidth=1.5; hx.beginPath(); hx.arc(cx,cy,s.r,0,Math.PI*2); hx.stroke(); hx.globalAlpha=.012; hx.fillStyle='#FF6B00'; hx.fill(); hx.restore(); }); for(var i=0;i<dots.length;i++){ for(var j=i+1;j<dots.length;j++){ var dx=dots[i].x-dots[j].x,dy=dots[i].y-dots[j].y,d=Math.sqrt(dx*dx+dy*dy); if(d<88){ hx.save(); hx.globalAlpha=(1-d/88)*.08; hx.strokeStyle='#FF6B00'; hx.lineWidth=.5; hx.beginPath(); hx.moveTo(dots[i].x,dots[i].y); hx.lineTo(dots[j].x,dots[j].y); hx.stroke(); hx.restore(); } } } dots.forEach(function(d){d.move();d.draw();}); if(heroActive()){ requestAnimationFrame(heroLoop); } else { heroRunning=false; } }
+var heroRunning=true, heroInView=true;
+function heroActive(){ return heroInView && !document.hidden && !reduceMotion; }
+function heroResume(){ if(!heroRunning && heroActive()){ heroRunning=true; heroLoop(); } }
 heroLoop();
-
-/* ══ SCENE3D ══ */
-var sc=document.getElementById('scene3d'); var s3=sc.getContext('2d');
-function resizeSc(){ sc.width=sc.offsetWidth||300; sc.height=sc.offsetHeight||110; } resizeSc();
-function isoCube(cx,cy,sz,al,fy){ var ox=cx,oy=cy+fy; s3.beginPath(); s3.moveTo(ox,oy-sz*.55); s3.lineTo(ox+sz,oy); s3.lineTo(ox,oy+sz*.55); s3.lineTo(ox-sz,oy); s3.closePath(); s3.fillStyle='rgba(255,107,0,'+al+')'; s3.fill(); s3.beginPath(); s3.moveTo(ox+sz,oy); s3.lineTo(ox+sz,oy+sz*.7); s3.lineTo(ox,oy+sz*1.25); s3.lineTo(ox,oy+sz*.55); s3.closePath(); s3.fillStyle='rgba(255,140,0,'+(al*.6)+')'; s3.fill(); s3.beginPath(); s3.moveTo(ox-sz,oy); s3.lineTo(ox-sz,oy+sz*.7); s3.lineTo(ox,oy+sz*1.25); s3.lineTo(ox,oy+sz*.55); s3.closePath(); s3.fillStyle='rgba(190,72,0,'+(al*.38)+')'; s3.fill(); }
-var t3=0;
-function scene3Loop(){ s3.clearRect(0,0,sc.width,sc.height); var CX=sc.width/2,CY=sc.height/2+8; isoCube(CX,CY-5,17,.82,Math.sin(t3*.016)*9); isoCube(CX-62,CY+2,10,.48,Math.sin(t3*.016+1.2)*9); isoCube(CX+62,CY+2,10,.48,Math.sin(t3*.016+2.0)*9); t3++; requestAnimationFrame(scene3Loop); }
-scene3Loop();
+new IntersectionObserver(function(en){ heroInView=en[0].isIntersecting; heroResume(); }).observe(document.getElementById('hero'));
+document.addEventListener('visibilitychange',heroResume);
 
 /* ══ TYPING HERO ══ */
 (function heroTyping(){
@@ -1272,6 +1406,7 @@ scene3Loop();
   var roles=['Développeur Web','Admin Réseaux','Gestionnaire SI','Designer UI/UX'];
   var ri=0,rc=0,rdel=false;
   function heroTick(){ var r=roles[ri]; el.textContent=r.substring(0,rc); if(!rdel&&rc<r.length){rc++;setTimeout(heroTick,85);} else if(!rdel&&rc===r.length){rdel=true;setTimeout(heroTick,2000);} else if(rdel&&rc>0){rc--;setTimeout(heroTick,45);} else{rdel=false;ri=(ri+1)%roles.length;setTimeout(heroTick,350);} }
+  if(reduceMotion){ el.textContent=roles[0]; return; }
   setTimeout(heroTick,400);
 })();
 
@@ -1285,18 +1420,34 @@ var skillIO=new IntersectionObserver(function(entries){ entries.forEach(function
 document.querySelectorAll('.skill-card').forEach(function(c){skillIO.observe(c);});
 
 /* ══ CONTACT FORM ══ */
-document.getElementById('sendBtn').addEventListener('click',function(){
-  var prenom=document.getElementById('f-prenom').value.trim();
-  var nom=document.getElementById('f-nom').value.trim();
-  var email=document.getElementById('f-email').value.trim();
-  var sujet=document.getElementById('f-sujet').value.trim();
-  var msg=document.getElementById('f-msg').value.trim();
-  if(!email||!msg){alert('⚠️ Veuillez remplir au moins votre email et votre message.');return;}
-  var to=window._formEmail||'msene6916@gmail.com';
-  var sub=encodeURIComponent(sujet||'Message portfolio — '+prenom+' '+nom);
-  var bod=encodeURIComponent('Bonjour,\n\nJe m\'appelle '+prenom+' '+nom+'.\n\n'+msg+'\n\nMon email : '+email);
-  window.location.href='mailto:'+to+'?subject='+sub+'&body='+bod;
-});
+(function initForm(){
+  var form=document.getElementById('contactForm'); if(!form) return;
+  var err=document.getElementById('f-error');
+  var TO='msene6916@gmail.com', WA='221781372767';
+  function el(id){ return document.getElementById(id); }
+  function val(id){ return el(id).value.trim(); }
+  function showError(msg,field){ err.textContent=msg; err.hidden=false; if(field) field.focus(); }
+  function clearError(){ err.hidden=true; err.textContent=''; }
+  function fullName(){ return (val('f-prenom')+' '+val('f-nom')).trim(); }
+  form.addEventListener('input',clearError);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=val('f-email'), msg=val('f-msg');
+    if(!msg){ showError("Merci d'écrire votre message.",el('f-msg')); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ showError("Merci d'indiquer une adresse e-mail valide pour recevoir ma réponse.",el('f-email')); return; }
+    var name=fullName();
+    var sub=encodeURIComponent(val('f-sujet')||('Message depuis le portfolio SENE TECH'+(name?' — '+name:'')));
+    var bod=encodeURIComponent('Bonjour,\n\n'+(name?"Je m'appelle "+name+'.\n\n':'')+msg+'\n\nMon e-mail : '+email);
+    window.location.href='mailto:'+TO+'?subject='+sub+'&body='+bod;
+  });
+  el('sendWa').addEventListener('click',function(){
+    var msg=val('f-msg');
+    if(!msg){ showError("Merci d'écrire votre message avant de l'envoyer sur WhatsApp.",el('f-msg')); return; }
+    var name=fullName(), subj=val('f-sujet');
+    var txt='Bonjour SENE TECH,'+(name?" je m'appelle "+name+'.':'')+(subj?'\nSujet : '+subj:'')+'\n\n'+msg;
+    window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(txt),'_blank','noopener');
+  });
+})();
 
 /* ══ ORBIT ICONS ══ */
 (function initOrbit(){
@@ -1317,7 +1468,7 @@ document.getElementById('sendBtn').addEventListener('click',function(){
 
   var count = techs.length;
 
-  techs.forEach(function(tech, i) {
+  function build(){ container.innerHTML=''; techs.forEach(function(tech, i) {
     var angle = (i / count) * 2 * Math.PI;
     var radius = wrap.offsetWidth / 2;
     var cx = radius + Math.cos(angle) * radius;
@@ -1332,44 +1483,22 @@ document.getElementById('sendBtn').addEventListener('click',function(){
     var img = document.createElement('img');
     img.src = tech.src;
     img.alt = tech.label;
+    img.addEventListener('error',function(){ el.style.display='none'; });
     el.appendChild(img);
     container.appendChild(el);
-  });
+  }); }
+  build();
+  var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(build,200); },{passive:true});
 })();
 
 
 (function initTheme(){
-  var saved=localStorage.getItem('portfolio_theme')||'light';
+  var saved='light'; try{ saved=localStorage.getItem('portfolio_theme')||'light'; }catch(e){}
   applyTheme(saved);
   document.getElementById('themeToggle').addEventListener('click',function(){ applyTheme(document.body.classList.contains('dark')?'light':'dark'); });
-  function applyTheme(mode){ var icon=document.getElementById('themeIcon'); if(mode==='dark'){document.body.classList.add('dark');icon.className='fa-solid fa-sun';}else{document.body.classList.remove('dark');icon.className='fa-solid fa-moon';} localStorage.setItem('portfolio_theme',mode); }
+  function applyTheme(mode){ var icon=document.getElementById('themeIcon'); if(mode==='dark'){document.body.classList.add('dark');icon.className='fa-solid fa-sun';}else{document.body.classList.remove('dark');icon.className='fa-solid fa-moon';} try{ localStorage.setItem('portfolio_theme',mode); }catch(e){} document.getElementById('themeToggle').setAttribute('aria-pressed',mode==='dark'?'true':'false'); }
 })();
 
-/* ══ COLOR PALETTE ══ */
-(function initPalette(){
-  var trigger=document.getElementById('paletteTrigger');
-  var dropdown=document.getElementById('paletteDropdown');
-  var dots=document.querySelectorAll('.pal-dot');
-  var savedColor=localStorage.getItem('portfolio_color')||'#FF6B00';
-  applyColor(savedColor);
-  trigger.addEventListener('click',function(e){ e.stopPropagation(); dropdown.classList.toggle('open'); });
-  document.addEventListener('click',function(){ dropdown.classList.remove('open'); });
-  dots.forEach(function(dot){ dot.addEventListener('click',function(e){ e.stopPropagation(); applyColor(dot.getAttribute('data-color')); dropdown.classList.remove('open'); }); });
-  function applyColor(color){
-    document.documentElement.style.setProperty('--orange',color);
-    document.documentElement.style.setProperty('--orange2',shiftColor(color,30));
-    document.documentElement.style.setProperty('--orange-glow',hexToRgba(color,0.10));
-    /* recalcul des variables dérivées pour que tout le CSS suive */
-    var num=parseInt(color.replace('#',''),16);
-    var r=(num>>16)&255, g=(num>>8)&255, b=num&255;
-    document.documentElement.style.setProperty('--orange-rgb', r+','+g+','+b);
-    localStorage.setItem('portfolio_color',color);
-    var preview=document.getElementById('palIconPreview'); if(preview){preview.style.background=color;preview.style.boxShadow='0 0 6px '+hexToRgba(color,0.5);}
-    dots.forEach(function(d){ d.classList.toggle('active',d.getAttribute('data-color')===color); });
-  }
-  function shiftColor(hex,amount){ var num=parseInt(hex.replace('#',''),16); var r=Math.min(255,(num>>16)+amount); var g=Math.min(255,((num>>8)&0xff)+amount); var b=Math.min(255,(num&0xff)+amount); return '#'+[r,g,b].map(function(v){return ('0'+v.toString(16)).slice(-2);}).join(''); }
-  function hexToRgba(hex,alpha){ var num=parseInt(hex.replace('#',''),16); return 'rgba('+((num>>16)&255)+','+((num>>8)&255)+','+(num&255)+','+alpha+')'; }
-})();
 </script>
 </body>
 </html>
