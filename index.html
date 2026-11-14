@@ -42,7 +42,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVD95J4JZB">
 </script>
 <script>
@@ -67,12 +67,11 @@
   --font-head:   'Orbitron', sans-serif;
   --font-body:   'Exo 2', sans-serif;
   --orange-rgb:  255,107,0;
-  --orange-btn:  #C94F00;      /* fond des boutons : blanc dessus = contraste AA */
-  --orange-text: #B94700;      /* orange pour petits textes sur fond clair (contraste AA) */
-  --orange-text-lg: #E05500;   /* orange pour grands titres sur fond clair */
+  --orange-btn:  #C94F00;
+  --orange-text: #B94700;
+  --orange-text-lg: #E05500;
 }
 
-/* ══ DARK MODE ══ */
 body.dark {
   --bg:    #0d0d12;
   --bg2:   #12121a;
@@ -106,7 +105,6 @@ body.dark .nav-controls .theme-toggle { color: var(--text); }
 body.dark .about-info-card { background: #1a1a26; border-color: rgba(255,107,0,0.18); }
 body.dark .about-highlight { background: rgba(255,107,0,0.08); border-color: rgba(255,107,0,0.20); }
 
-/* ══ NAV CONTROLS ══ */
 .nav-controls {
   display: flex;
   align-items: center;
@@ -132,8 +130,6 @@ body.dark .about-highlight { background: rgba(255,107,0,0.08); border-color: rgb
   box-shadow: 0 0 12px rgba(255,107,0,0.25);
 }
 
-
-/* ══ HERO GREETING ══ */
 .hero-greeting {
   font-size: clamp(0.88rem, 2vw, 1.1rem);
   color: var(--muted);
@@ -155,7 +151,6 @@ img { max-width: 100%; display: block; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 4px; }
 
-/* ══ CURSOR ══ */
 #cursor-orb {
   position: fixed; width: 26px; height: 26px; border-radius: 50%; pointer-events: none; z-index: 9999;
   transform: translate(-50%,-50%);
@@ -175,7 +170,6 @@ img { max-width: 100%; display: block; }
   #cursor-trail { display: block; }
 }
 
-/* ══ NAV ══ */
 nav {
   position: fixed; top:0; left:0; right:0; z-index:200;
   display:flex; align-items:center; justify-content:space-between;
@@ -222,7 +216,6 @@ nav {
 .nav-drawer li a:hover { color: var(--orange-text); background:var(--orange-glow); }
 @keyframes drawerSlide { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
 
-/* ══ HERO ══ */
 #hero {
   min-height: 100vh;
   display: flex;
@@ -240,7 +233,6 @@ nav {
 .corner-deco.bl { bottom: 24px; left: 24px; border-bottom: 2px solid var(--orange); border-left: 2px solid var(--orange); border-radius: 0 0 0 4px; opacity: .3; animation: cornerPulse 3s ease-in-out infinite 1.5s; }
 .corner-deco.br { bottom: 24px; right: 24px; border-bottom: 2px solid var(--orange); border-right: 2px solid var(--orange); border-radius: 0 0 4px 0; opacity: .3; animation: cornerPulse 3s ease-in-out infinite 2.25s; }
 
-/* ── HERO GRID — texte gauche, orbite droite ── */
 .hero-grid {
   position: relative; z-index: 2;
   display: grid;
@@ -252,7 +244,6 @@ nav {
   margin: 0 auto;
 }
 
-/* ── ORBIT SIDE ── */
 .hero-orbit-side {
   display: flex;
   align-items: center;
@@ -264,7 +255,6 @@ nav {
   width: 340px; height: 340px;
 }
 
-/* Photo centrale */
 .hero-photo-circle {
   position: absolute;
   top: 50%; left: 50%;
@@ -288,7 +278,6 @@ nav {
 .hero-photo-circle img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .hero-photo-circle i { font-size: 5rem; color: var(--orange-text); opacity: .8; }
 
-/* Anneau lumineux */
 .orbit-ring {
   position: absolute; inset: 0; border-radius: 50%;
   border: 1.5px solid rgba(255,107,0,0.25);
@@ -300,7 +289,6 @@ nav {
   animation: rotateSlow 30s linear infinite;
 }
 
-/* Icônes orbitales */
 .orbit-icons {
   position: absolute; inset: 0;
   animation: rotateSlow 14s linear infinite;
@@ -329,7 +317,6 @@ body.dark .orbit-icon-item { background: #1a1a26; }
 
 @keyframes counterRotate { from{transform:translate(-50%,-50%) rotate(0deg);} to{transform:translate(-50%,-50%) rotate(-360deg);} }
 
-/* social icons sous la photo */
 .hero-socials {
   display: flex; gap: .65rem; justify-content: flex-start;
   margin-top: 1.6rem;
@@ -349,7 +336,6 @@ body.dark .orbit-icon-item { background: #1a1a26; }
 .hsb-gh   { background: #1a1a1a; }
 .hsb-mail { background: var(--orange-btn); }
 
-/* ── TEXT SIDE ── */
 .hero-text-side {
   animation: fadeDown 1s ease .1s both;
   text-align: left;
@@ -408,8 +394,6 @@ body.dark .orbit-icon-item { background: #1a1a26; }
 .stat-num { font-family: var(--font-head); font-size: 1.75rem; font-weight: 700; color: var(--orange-text); display: block; }
 .stat-label { font-size: .66rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-top: .2rem; }
 
-
-/* ══ SECTIONS ══ */
 section { padding:5.5rem 1.5rem; }
 .container { max-width:1080px; margin:0 auto; }
 .section-tag { font-family:var(--font-head); font-size:.6rem; color: var(--orange-text); letter-spacing:4px; text-transform:uppercase; margin-bottom:.4rem; }
@@ -417,7 +401,6 @@ section { padding:5.5rem 1.5rem; }
 .section-title span { color: var(--orange-text); }
 .section-line { width:55px; height:3px; background:linear-gradient(90deg,var(--orange),transparent); margin-bottom:2.8rem; border-radius:2px; }
 
-/* ══ ABOUT ══ */
 #about {
   background: var(--bg2);
   padding: 5.5rem 1.5rem;
@@ -490,7 +473,6 @@ section { padding:5.5rem 1.5rem; }
   .about-card p { text-align: left; }
 }
 
-/* ══ SKILLS ══ */
 #skills { background:var(--bg); }
 .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.8rem; }
 .skill-card {
@@ -509,7 +491,6 @@ section { padding:5.5rem 1.5rem; }
 .skill-bar { height:6px; background:var(--bg3); border-radius:10px; overflow:hidden; }
 .skill-fill { height:100%; background:linear-gradient(90deg,var(--orange),var(--orange2)); border-radius:10px; width:0; transition:width 1.5s cubic-bezier(.4,0,.2,1); }
 
-/* ══ PROJECTS ══ */
 #projects { background: var(--bg2); }
 
 .projects-intro {
@@ -540,7 +521,6 @@ section { padding:5.5rem 1.5rem; }
   border-color: rgba(255,107,0,0.28);
 }
 
-/* Screenshot preview */
 .project-img-wrap {
   overflow: hidden;
   position: relative;
@@ -561,10 +541,8 @@ section { padding:5.5rem 1.5rem; }
   font-size: 3rem; color: var(--orange-text); opacity: .6;
 }
 
-/* Body */
 .project-body { padding: 1.5rem 1.6rem; flex: 1; display: flex; flex-direction: column; gap: .7rem; }
 
-/* Titre + badge sur la même ligne */
 .project-header {
   display: flex;
   align-items: center;
@@ -588,7 +566,6 @@ section { padding:5.5rem 1.5rem; }
   white-space: nowrap; flex-shrink: 0;
 }
 
-/* Description longue */
 .project-card p {
   color: var(--muted);
   font-size: .87rem;
@@ -597,7 +574,6 @@ section { padding:5.5rem 1.5rem; }
   flex: 1;
 }
 
-/* Techs */
 .project-techs { display: flex; flex-wrap: wrap; gap: .4rem; }
 .tech-badge {
   background: var(--bg3);
@@ -609,7 +585,6 @@ section { padding:5.5rem 1.5rem; }
 }
 .tech-badge:hover { background: var(--orange-glow); color: var(--orange-text); transform: translateY(-1px); }
 
-/* Bouton voir le projet */
 .project-link {
   display: inline-flex; align-items: center; gap: .55rem;
   margin-top: .4rem;
@@ -631,7 +606,6 @@ section { padding:5.5rem 1.5rem; }
   box-shadow: 0 8px 22px rgba(255,107,0,0.28);
 }
 
-/* ══ CERTIFICATIONS ══ */
 #certifications { background:var(--bg); }
 .cert-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.3rem; }
 .cert-card { background:var(--card); border:1px solid rgba(255,107,0,0.12); border-radius:13px; padding:1.3rem 1.5rem; display:flex; align-items:center; gap:1rem; box-shadow:var(--shadow); transition:border-color .28s, transform .28s, box-shadow .28s; }
@@ -642,7 +616,6 @@ section { padding:5.5rem 1.5rem; }
 .cert-info h4 { font-size:.84rem; font-weight:600; margin-bottom:.2rem; color:var(--text); }
 .cert-info span { font-size:.72rem; color: var(--orange-text); letter-spacing:1px; font-weight:500; }
 
-/* ══ CONTACT ══ */
 #contact { background:var(--bg2); }
 .contact-wrapper { display:grid; grid-template-columns:1fr 1.5fr; gap:3.5rem; align-items:start; }
 .contact-info h3 { font-family:var(--font-head); font-size:1.05rem; margin-bottom:.75rem; color:var(--text); }
@@ -672,20 +645,16 @@ section { padding:5.5rem 1.5rem; }
 .form-group input:focus, .form-group textarea:focus { border-color:var(--orange); box-shadow:0 0 0 3px rgba(255,107,0,0.09); }
 .form-group textarea { min-height:115px; }
 
-/* ══ FOOTER ══ */
 footer { text-align:center; padding:1.8rem; border-top:1px solid rgba(255,107,0,0.09); color:var(--muted); font-size:.78rem; background:var(--bg); }
 footer span { color: var(--orange-text); font-weight:600; }
 
-/* ══ REVEAL ══ */
 .reveal { opacity:0; transform:translateY(28px); transition:opacity .65s ease, transform .65s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
 
-/* ══ KEYFRAMES ══ */
 @keyframes fadeDown    { from{opacity:0;transform:translateY(-22px);} to{opacity:1;transform:translateY(0);} }
 @keyframes rotateSlow  { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
 @keyframes cornerPulse { 0%,100%{opacity:.22;transform:scale(1);} 50%{opacity:.55;transform:scale(1.09);} }
 
-/* ══ RESPONSIVE TABLET ══ */
 @media (max-width:1024px) {
   nav { padding:0 2rem; }
   .skills-grid { grid-template-columns:1fr 1fr; }
@@ -694,7 +663,6 @@ footer span { color: var(--orange-text); font-weight:600; }
   .about-info-cards { grid-template-columns:1fr; }
 }
 
-/* ══ RESPONSIVE MOBILE ══ */
 @media (max-width:768px) {
   .nav-links { display:none!important; }
   .hamburger { display:flex; }
@@ -735,7 +703,6 @@ footer span { color: var(--orange-text); font-weight:600; }
   section { padding:3.8rem 1.1rem; }
 }
 
-/* ══ RESPONSIVE SMALL ══ */
 @media (max-width:480px) {
   .hero-title { font-size:clamp(1.3rem,8vw,1.85rem); }
   .stat-num { font-size:1.25rem; }
@@ -746,7 +713,6 @@ footer span { color: var(--orange-text); font-weight:600; }
   .section-title { font-size:clamp(1.15rem,6vw,1.6rem); }
 }
 
-/* ══════════ SENE TECH — AMÉLIORATIONS (nov. 2026) ══════════ */
 html { scroll-padding-top: 72px; }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 .skip-link { position:fixed; left:1rem; top:-70px; z-index:10000; background:var(--orange-btn); color:#fff; padding:.6rem 1rem; border-radius:8px; font-weight:600; transition:top .2s; }
@@ -754,7 +720,6 @@ html { scroll-padding-top: 72px; }
 :focus-visible { outline:3px solid var(--orange-text-lg); outline-offset:3px; }
 .hero-title .name, .section-title span, .stat-num, .nav-logo span { color: var(--orange-text-lg); }
 
-/* Boutons */
 .btn-primary:hover { background:#A83F00; }
 body.dark .btn-outline { border-color:rgba(255,255,255,.28); }
 .btn-whatsapp { background:transparent; color:var(--text); border:2px solid #1FA855; }
@@ -763,7 +728,6 @@ body.dark .btn-outline { border-color:rgba(255,255,255,.28); }
 .btn-whatsapp:hover i { color:#fff; }
 .btn { min-height:44px; }
 
-/* Navigation */
 .nav-controls { gap:.6rem; }
 .nav-fiverr { padding:.5rem 1rem; font-size:.7rem; letter-spacing:.8px; white-space:nowrap; min-height:40px; }
 .theme-toggle { width:40px; height:40px; }
@@ -785,7 +749,6 @@ body.dark .btn-outline { border-color:rgba(255,255,255,.28); }
 }
 @media (max-width:768px) { .nav-fiverr { display:none; } }
 
-/* Accueil */
 .hero-subtitle { margin-bottom:1.1rem; }
 .hero-brand-line { font-size:clamp(.82rem,1.5vw,.95rem); color:var(--text); margin:0 0 1.8rem; line-height:1.7; padding-left:.9rem; border-left:3px solid var(--orange); max-width:34rem; }
 @media (max-width:480px) {
@@ -796,7 +759,6 @@ body.dark .btn-outline { border-color:rgba(255,255,255,.28); }
   .hero-social-btn { width:42px; height:42px; }
 }
 
-/* Services */
 #services { background:var(--bg2); }
 .services-intro { color:var(--muted); max-width:640px; margin:0 0 2rem; line-height:1.75; font-size:.95rem; }
 .services-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; }
@@ -831,7 +793,6 @@ body.dark .btn-outline { border-color:rgba(255,255,255,.28); }
   .services-cta-btns .btn { width:100%; justify-content:center; }
 }
 
-/* Contact */
 .cl-fiverr .contact-link-icon { background:var(--orange-btn); }
 .form-error { color:#B42318; background:rgba(180,35,24,.08); border:1px solid rgba(180,35,24,.3); padding:.6rem .8rem; border-radius:9px; font-size:.82rem; margin-bottom:.8rem; line-height:1.5; }
 body.dark .form-error { color:#ff9a8f; }
@@ -839,7 +800,6 @@ body.dark .form-error { color:#ff9a8f; }
 .form-actions .btn { flex:1 1 180px; justify-content:center; padding:.95rem 1rem; font-size:.78rem; }
 .form-note { font-size:.72rem; color:var(--muted); margin-top:.8rem; line-height:1.5; }
 
-/* WhatsApp flottant (ordinateur) + barre d'action (mobile) */
 .wa-float { position:fixed; right:1.2rem; bottom:1.2rem; z-index:150; width:56px; height:56px; border-radius:50%; background:#1FA855; color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.7rem; box-shadow:0 8px 24px rgba(0,0,0,.25); transition:transform .25s; }
 .wa-float:hover { transform:scale(1.08); }
 .mobile-cta { display:none; }
@@ -852,7 +812,6 @@ body.dark .form-error { color:#ff9a8f; }
   body { padding-bottom:calc(68px + env(safe-area-inset-bottom)); }
 }
 
-/* Mouvement réduit */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
 }
@@ -861,11 +820,9 @@ body.dark .form-error { color:#ff9a8f; }
 <body>
 <a class="skip-link" href="#main">Aller au contenu</a>
 
-<!-- CURSOR -->
 <div id="cursor-orb" aria-hidden="true"></div>
 <div id="cursor-trail" aria-hidden="true"></div>
 
-<!-- NAV -->
 <nav aria-label="Navigation principale">
   <a class="nav-logo" href="#hero" aria-label="SENE TECH — retour à l'accueil">SENE<span>.</span>TECH</a>
   <ul class="nav-links" id="navLinks">
@@ -886,7 +843,6 @@ body.dark .form-error { color:#ff9a8f; }
   <button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- MOBILE DRAWER -->
 <ul class="nav-drawer" id="navDrawer">
   <li><a href="#hero">Accueil</a></li>
   <li><a href="#services">Services</a></li>
@@ -901,7 +857,6 @@ body.dark .form-error { color:#ff9a8f; }
 
 <main id="main">
 
-<!-- HERO -->
 <section id="hero">
   <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
   <div class="corner-deco tl"></div>
@@ -911,7 +866,6 @@ body.dark .form-error { color:#ff9a8f; }
 
   <div class="hero-grid">
 
-    <!-- TEXTE GAUCHE -->
     <div class="hero-text-side">
       <div class="hero-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>&nbsp;<span>Disponible pour vos projets web</span></div>
       <p class="hero-greeting">Bonjour, je suis</p>
@@ -920,17 +874,14 @@ body.dark .form-error { color:#ff9a8f; }
         <i class="fa-solid fa-code"></i>
         <span id="heroRoleTyping"></span><span class="typing-cursor" style="height:.9em;"></span>
       </div>
-      <p class="hero-subtitle" id="d-hero-subtitle">Étudiant en Informatique Appliquée à la Gestion des Entreprises, passionné par le développement web, les réseaux et les systèmes d'information.</p>
+      <p class="hero-subtitle">Étudiant en Informatique Appliquée à la Gestion des Entreprises, passionné par le développement web, les réseaux et les systèmes d'information.</p>
       <p class="hero-brand-line"><strong>SENE TECH</strong> — sites vitrines, intégration HTML/CSS/Bootstrap et sites responsive pour présenter votre activité.</p>
       <div class="hero-cta">
         <a href="https://www.fiverr.com/modousene376" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>Commander sur Fiverr</a>
         <a href="https://wa.me/221781372767?text=Bonjour%20SENE%20TECH%2C%20j%27ai%20vu%20votre%20portfolio%20et%20je%20souhaite%20discuter%20d%27un%20projet%20de%20site%20web." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>WhatsApp</a>
         <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-envelope" aria-hidden="true"></i>Me contacter</a>
       </div>
-      <!-- Bouton « Télécharger CV » masqué temporairement (cv.pdf absent du dépôt).
-           Pour le réactiver : ajouter cv.pdf à la racine du dépôt puis insérer
-           <a href="cv.pdf" download class="btn btn-outline">Télécharger CV</a> dans .hero-cta -->
-      <!-- Réseaux sociaux sous les boutons -->
+
       <div class="hero-socials">
         <a href="https://www.facebook.com/modou.sene" target="_blank" rel="noopener noreferrer" class="hero-social-btn hsb-fb" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="https://wa.me/221781372767" target="_blank" rel="noopener noreferrer" class="hero-social-btn hsb-wa" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
@@ -939,29 +890,25 @@ body.dark .form-error { color:#ff9a8f; }
         <a href="mailto:msene6916@gmail.com" class="hero-social-btn hsb-mail" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
       </div>
       <div class="hero-stats" style="margin-top:2rem;">
-        <div class="stat"><span class="stat-num" id="d-stat1-num">5+</span><span class="stat-label" id="d-stat1-label">Projets</span></div>
-        <div class="stat"><span class="stat-num" id="d-stat2-num">10+</span><span class="stat-label" id="d-stat2-label">Technologies</span></div>
-        <div class="stat"><span class="stat-num" id="d-stat3-num">4+</span><span class="stat-label" id="d-stat3-label">Certifications</span></div>
-        <div class="stat"><span class="stat-num" id="d-stat4-num">L2</span><span class="stat-label" id="d-stat4-label">Licence en cours</span></div>
+        <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Projets</span></div>
+        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Technologies</span></div>
+        <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Certifications</span></div>
+        <div class="stat"><span class="stat-num">L2</span><span class="stat-label">Licence en cours</span></div>
       </div>
     </div>
 
-    <!-- ORBITE DROITE -->
     <div class="hero-orbit-side">
       <div>
         <div class="hero-orbit-wrap" id="orbitWrap">
-          <!-- Anneaux décoratifs -->
+
           <div class="orbit-ring"></div>
           <div class="orbit-ring-dash"></div>
-          <!-- Photo centrale -->
+
           <div class="hero-photo-circle">
-            <!--
-              📸 Pour ajouter ta photo : remplace le <i> par
-             
-            -->
+
             <img src="modou.webp" onerror="this.onerror=null;this.src='img.jpeg';" alt="Modou Sène, développeur web – SENE TECH" width="640" height="853" fetchpriority="high" decoding="async"/>
           </div>
-          <!-- Icônes orbitales (JS les positionne) -->
+
           <div class="orbit-icons" id="orbitIcons"></div>
         </div>
       </div>
@@ -970,7 +917,6 @@ body.dark .form-error { color:#ff9a8f; }
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" aria-labelledby="services-title">
   <div class="container">
     <p class="section-tag">// Services</p>
@@ -1029,7 +975,6 @@ body.dark .form-error { color:#ff9a8f; }
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="about-card reveal">
@@ -1046,14 +991,12 @@ body.dark .form-error { color:#ff9a8f; }
         <a href="#services" class="about-btn">
           <i class="fa-solid fa-briefcase" aria-hidden="true"></i> Mes services
         </a>
-        <!-- Bouton « Télécharger mon CV » masqué temporairement (cv.pdf absent du dépôt).
-             Pour le réactiver : <a href="cv.pdf" download="CV-Modou-Sene.pdf" class="about-btn">Télécharger mon CV</a> -->
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="container">
     <p class="section-tag">// Compétences</p>
@@ -1129,7 +1072,6 @@ body.dark .form-error { color:#ff9a8f; }
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="container">
     <p class="section-tag" style="text-align:center;">// Projets</p>
@@ -1137,10 +1079,9 @@ body.dark .form-error { color:#ff9a8f; }
     <p class="projects-intro">Découvrez quelques-uns de mes projets récents qui démontrent mes compétences en développement web, réseaux et gestion des systèmes d'information.</p>
     <div class="projects-grid">
 
-      <!-- Projet 1 -->
       <div class="project-card reveal">
         <div class="project-img-wrap">
-          <!-- Image à ajouter : <img src="NOM-DU-FICHIER.jpg" alt="Site Web Entreprise" class="project-img" /> -->
+
           <div class="project-img-placeholder" style="display:flex;" role="img" aria-label="Site Web Entreprise"><i class="fa-solid fa-globe"></i></div>
         </div>
         <div class="project-body">
@@ -1154,14 +1095,13 @@ body.dark .form-error { color:#ff9a8f; }
             <span class="tech-badge">JavaScript</span>
             <span class="tech-badge">PHP</span>
           </div>
-          <!-- Lien « Voir le projet » masqué (pas d'URL valide). Pour le réactiver : <a href="URL_DU_PROJET" target="_blank" rel="noopener" class="project-link">Voir le projet</a> -->
+
         </div>
       </div>
 
-      <!-- Projet 2 -->
       <div class="project-card reveal">
         <div class="project-img-wrap">
-          <!-- Image à ajouter : <img src="NOM-DU-FICHIER.jpg" alt="Infrastructure Réseau" class="project-img" /> -->
+
           <div class="project-img-placeholder" style="display:flex;" role="img" aria-label="Infrastructure Réseau"><i class="fa-solid fa-network-wired"></i></div>
         </div>
         <div class="project-body">
@@ -1176,14 +1116,13 @@ body.dark .form-error { color:#ff9a8f; }
             <span class="tech-badge">VLAN</span>
             <span class="tech-badge">DHCP/DNS</span>
           </div>
-          <!-- Lien « Voir le projet » masqué (pas d'URL valide). Pour le réactiver : <a href="URL_DU_PROJET" target="_blank" rel="noopener" class="project-link">Voir le projet</a> -->
+
         </div>
       </div>
 
-      <!-- Projet 3 -->
       <div class="project-card reveal">
         <div class="project-img-wrap">
-          <!-- Image à ajouter : <img src="NOM-DU-FICHIER.jpg" alt="Site E-commerce" class="project-img" /> -->
+
           <div class="project-img-placeholder" style="display:flex;" role="img" aria-label="Site E-commerce"><i class="fa-brands fa-wordpress"></i></div>
         </div>
         <div class="project-body">
@@ -1198,14 +1137,13 @@ body.dark .form-error { color:#ff9a8f; }
             <span class="tech-badge">PHP</span>
             <span class="tech-badge">SEO</span>
           </div>
-          <!-- Lien « Voir le projet » masqué (pas d'URL valide). Pour le réactiver : <a href="URL_DU_PROJET" target="_blank" rel="noopener" class="project-link">Voir le projet</a> -->
+
         </div>
       </div>
 
-      <!-- Projet 4 -->
       <div class="project-card reveal">
         <div class="project-img-wrap">
-          <!-- Image à ajouter : <img src="NOM-DU-FICHIER.jpg" alt="App Gestion Stock" class="project-img" /> -->
+
           <div class="project-img-placeholder" style="display:flex;" role="img" aria-label="App Gestion Stock"><i class="fa-solid fa-boxes-stacked"></i></div>
         </div>
         <div class="project-body">
@@ -1219,11 +1157,10 @@ body.dark .form-error { color:#ff9a8f; }
             <span class="tech-badge">SQLite</span>
             <span class="tech-badge">Tkinter</span>
           </div>
-          <!-- Lien « Voir le projet » masqué (pas d'URL valide). Pour le réactiver : <a href="URL_DU_PROJET" target="_blank" rel="noopener" class="project-link">Voir le projet</a> -->
+
         </div>
       </div>
 
-      <!-- Projet 5 — Bambey Sérère TV -->
       <div class="project-card reveal">
         <div class="project-img-wrap">
           <img src="bambey-sereretv.webp" loading="lazy" decoding="async" width="1354" height="594" alt="Bambey Sérère TV" class="project-img"
@@ -1254,7 +1191,6 @@ body.dark .form-error { color:#ff9a8f; }
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="container">
     <p class="section-tag">// Certifications</p>
@@ -1269,7 +1205,6 @@ body.dark .form-error { color:#ff9a8f; }
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <p class="section-tag">// Contact</p>
@@ -1284,23 +1219,23 @@ body.dark .form-error { color:#ff9a8f; }
             <div class="contact-link-icon"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i></div>
             <div class="contact-link-text"><span class="link-main">Commander sur Fiverr</span><small>Profil SENE TECH · modousene376</small></div>
           </a>
-          <a href="mailto:msene6916@gmail.com" class="contact-link cl-email" id="d-c-email">
+          <a href="mailto:msene6916@gmail.com" class="contact-link cl-email">
             <div class="contact-link-icon"><i class="fa-solid fa-envelope"></i></div>
             <div class="contact-link-text"><span class="link-main">msene6916@gmail.com</span><small>Email · Réponse sous 24h</small></div>
           </a>
-          <a href="https://www.linkedin.com/in/modou-sene-908" target="_blank" rel="noopener" class="contact-link cl-linkedin" id="d-c-linkedin">
+          <a href="https://www.linkedin.com/in/modou-sene-908" target="_blank" rel="noopener" class="contact-link cl-linkedin">
             <div class="contact-link-icon"><i class="fa-brands fa-linkedin-in"></i></div>
             <div class="contact-link-text"><span class="link-main">LinkedIn</span><small>Réseau professionnel</small></div>
           </a>
-          <a href="https://github.com/modousene200" target="_blank" rel="noopener" class="contact-link cl-github" id="d-c-github">
+          <a href="https://github.com/modousene200" target="_blank" rel="noopener" class="contact-link cl-github">
             <div class="contact-link-icon"><i class="fa-brands fa-github"></i></div>
             <div class="contact-link-text"><span class="link-main">GitHub</span><small>Voir mes dépôts</small></div>
           </a>
-          <a href="https://wa.me/221781372767?text=Bonjour%20SENE%20TECH%2C%20je%20vous%20contacte%20depuis%20votre%20portfolio%20au%20sujet%20d%27un%20projet." target="_blank" rel="noopener" class="contact-link cl-whatsapp" id="d-c-whatsapp">
+          <a href="https://wa.me/221781372767?text=Bonjour%20SENE%20TECH%2C%20je%20vous%20contacte%20depuis%20votre%20portfolio%20au%20sujet%20d%27un%20projet." target="_blank" rel="noopener" class="contact-link cl-whatsapp">
             <div class="contact-link-icon"><i class="fa-brands fa-whatsapp"></i></div>
             <div class="contact-link-text"><span class="link-main">+221 78 137 27 67</span><small>WhatsApp · Message direct</small></div>
           </a>
-          <a href="https://www.google.com/maps/place/Dakar" target="_blank" rel="noopener" class="contact-link cl-location" id="d-c-location">
+          <a href="https://www.google.com/maps/place/Dakar" target="_blank" rel="noopener" class="contact-link cl-location">
             <div class="contact-link-icon"><i class="fa-solid fa-location-dot"></i></div>
             <div class="contact-link-text"><span class="link-main">Dakar, Sénégal</span><small>Localisation · Disponible en présentiel</small></div>
           </a>
@@ -1309,10 +1244,10 @@ body.dark .form-error { color:#ff9a8f; }
       <div class="reveal">
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
-            <div class="form-group"><label for="f-prenom">Prénom</label><input type="text" id="f-prenom" name="prenom" autocomplete="given-name" placeholder="Jean"/></div>
-            <div class="form-group"><label for="f-nom">Nom</label><input type="text" id="f-nom" name="nom" autocomplete="family-name" placeholder="Dupont"/></div>
+            <div class="form-group"><label for="f-prenom">Prénom</label><input type="text" id="f-prenom" name="prenom" autocomplete="given-name" placeholder="Votre prénom"/></div>
+            <div class="form-group"><label for="f-nom">Nom</label><input type="text" id="f-nom" name="nom" autocomplete="family-name" placeholder="Votre nom"/></div>
           </div>
-          <div class="form-group"><label for="f-email">Email</label><input type="email" id="f-email" name="email" autocomplete="email" placeholder="jean@exemple.com" aria-describedby="f-error"/></div>
+          <div class="form-group"><label for="f-email">Email</label><input type="email" id="f-email" name="email" autocomplete="email" placeholder="votre@email.com" aria-describedby="f-error"/></div>
           <div class="form-group"><label for="f-sujet">Sujet</label><input type="text" id="f-sujet" name="sujet" placeholder="Projet de site web, stage, alternance…"/></div>
           <div class="form-group"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Bonjour, je souhaite vous contacter pour..." aria-describedby="f-error"></textarea></div>
           <p class="form-error" id="f-error" role="alert" hidden></p>
@@ -1329,7 +1264,6 @@ body.dark .form-error { color:#ff9a8f; }
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <p><strong>SENE TECH</strong> &nbsp;·&nbsp; Conçu avec <i class="fa-solid fa-heart" style="color: var(--orange-text);" aria-hidden="true"></i> par <span>Modou Sène</span> &nbsp;·&nbsp; Étudiant en Informatique & Gestion &nbsp;·&nbsp; en cours de formation</p>
 </footer>
@@ -1341,12 +1275,11 @@ body.dark .form-error { color:#ff9a8f; }
 </div>
 
 <script>
-/* ══ PRÉFÉRENCES ══ */
+
 var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var finePointer  = window.matchMedia('(pointer: fine)').matches;
 var isSmall      = window.matchMedia('(max-width: 768px)').matches;
 
-/* ══ CURSOR (ordinateur uniquement) ══ */
 var orb=document.getElementById('cursor-orb');
 var trail=document.getElementById('cursor-trail');
 if(finePointer && !reduceMotion && orb && trail){
@@ -1361,7 +1294,6 @@ if(finePointer && !reduceMotion && orb && trail){
   });
 }
 
-/* ══ HAMBURGER ══ */
 var hamburger=document.getElementById('hamburger');
 var navDrawer=document.getElementById('navDrawer');
 function setMenu(open){
@@ -1373,13 +1305,11 @@ hamburger.addEventListener('click',function(){ setMenu(!navDrawer.classList.cont
 navDrawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ setMenu(false); }); });
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') setMenu(false); });
 
-/* ══ ACTIVE NAV ══ */
 var allLinks=document.querySelectorAll('.nav-links a, .nav-drawer a');
 var sections=document.querySelectorAll('section[id]');
 function setActive(){ var cur=''; sections.forEach(function(s){ if(window.scrollY>=s.offsetTop-120) cur=s.id; }); allLinks.forEach(function(a){ a.classList.toggle('active',a.getAttribute('href')==='#'+cur); }); }
 window.addEventListener('scroll',setActive,{passive:true}); setActive();
 
-/* ══ HERO CANVAS ══ */
 var hc=document.getElementById('heroCanvas');
 var hx=hc.getContext('2d');
 var W,H;
@@ -1400,7 +1330,6 @@ heroLoop();
 new IntersectionObserver(function(en){ heroInView=en[0].isIntersecting; heroResume(); }).observe(document.getElementById('hero'));
 document.addEventListener('visibilitychange',heroResume);
 
-/* ══ TYPING HERO ══ */
 (function heroTyping(){
   var el=document.getElementById('heroRoleTyping'); if(!el) return;
   var roles=['Développeur Web','Admin Réseaux','Gestionnaire SI','Designer UI/UX'];
@@ -1410,16 +1339,13 @@ document.addEventListener('visibilitychange',heroResume);
   setTimeout(heroTick,400);
 })();
 
-/* ══ SCROLL REVEAL ══ */
 var revealEls=document.querySelectorAll('.reveal');
 var revIO=new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('visible');revIO.unobserve(e.target);} }); },{threshold:.10});
 revealEls.forEach(function(el){revIO.observe(el);});
 
-/* ══ SKILL BARS ══ */
 var skillIO=new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ e.target.querySelectorAll('.skill-fill').forEach(function(b){b.style.width=b.dataset.width+'%';}); skillIO.unobserve(e.target); } }); },{threshold:.20});
 document.querySelectorAll('.skill-card').forEach(function(c){skillIO.observe(c);});
 
-/* ══ CONTACT FORM ══ */
 (function initForm(){
   var form=document.getElementById('contactForm'); if(!form) return;
   var err=document.getElementById('f-error');
@@ -1449,7 +1375,6 @@ document.querySelectorAll('.skill-card').forEach(function(c){skillIO.observe(c);
   });
 })();
 
-/* ══ ORBIT ICONS ══ */
 (function initOrbit(){
   var wrap = document.getElementById('orbitWrap');
   var container = document.getElementById('orbitIcons');
@@ -1490,7 +1415,6 @@ document.querySelectorAll('.skill-card').forEach(function(c){skillIO.observe(c);
   build();
   var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(build,200); },{passive:true});
 })();
-
 
 (function initTheme(){
   var saved='light'; try{ saved=localStorage.getItem('portfolio_theme')||'light'; }catch(e){}
